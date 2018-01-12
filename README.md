@@ -14,7 +14,7 @@ Evaluating object stores for HPC science applications
 
 **Science Applications** that represent typical HPC workload:
 
-|| Boss       | VPIC           | HACC   |
+|| BOSS       | VPIC           | HACC   |
 |------------- | ------------- |:-------------:| -----:|
 |Field| Astronomy      | Physics |  Cosmology |
 |Code| [H5BOSS](https://github.com/valiantljk/h5boss)     | [VPIC-IO](https://github.com/glennklockwood/vpic-io)     |   [HACC-IO](https://asc.llnl.gov/CORAL-benchmarks/#hacc) |
