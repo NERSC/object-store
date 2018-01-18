@@ -18,3 +18,45 @@ Evaluating object stores for HPC science applications
 |------------- | ------------- |:-------------:| -----:|
 |Field| Astronomy      | Physics |  Cosmology |
 |Code| [H5BOSS](https://github.com/valiantljk/h5boss)     | [VPIC-IO](https://github.com/glennklockwood/vpic-io)     |   [HACC-IO](https://asc.llnl.gov/CORAL-benchmarks/#hacc) |
+
+
+**Testbed**:
+
+|| Swift@NERSC       | DAOS@Intel           | Ceph@?   |
+|------------- | ------------- |:-------------:| -----:|
+|Storage Nodes| 4     | NA|  NA |
+|Gateway Nodes| 2    |  NA    | NA   |
+
+**Metrics**
+
+Use at Performance Tier vs. Lustre
+
+|Metrics| Function/Scale|
+|-------|-------|
+|Bandwidth|single node, multi-nodes(scalability)|
+|IOPS||
+|Metadata|File/object open/close/create|
+|Autentication||
+
+Use at Warm/Cold Tier vs. HPSS?
+
+|Metrics||
+|-------|------|
+|File Scan|ls|
+|File Movement|cp, put/get|
+|File Sharing||
+|User-defined Metadata|put/get|
+
+Transition (Posix to Object API)
+
+|Metrics|
+|-------|
+|?|
+
+Admin/ Operation 
+
+|Metrics|
+|------|
+|Live Expandability|
+|Relibility|
+|Rebuilding|
