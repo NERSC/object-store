@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component inherit-compiler-output="true" jdk="Python 2.7.10 (/anaconda/bin/python2.7)" jdk_type="Python SDK">
+	<output-test url="file://$MODULE_DIR$/out/test/h5boss-util"/>
+	<exclude-output/>
+	<contentEntry url="file://$MODULE_DIR$"/>
+	<levels>
+		<level name="h5boss" value="project"/>
+	</levels>
+</component>

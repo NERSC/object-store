@@ -1,0 +1,8 @@
+#!/bin/bash
+module load python/2.7-anaconda
+#module load python/3.5-anaconda
+module load h5py-parallel
+export PYTHONPATH=`pwd`/h5boss_py:$PYTHONPATH
+export PATH=`pwd`/h5boss_py/scripts:$PATH
+export PATH=/global/homes/j/jialin/h5boss-heavy/h5boss_py/memprofile/mm/bin/:$PATH
+export PYTHONPATH=$PYTHONPATH:/global/homes/j/jialin/h5boss-heavy/h5boss_py/memprofile/mm/lib/python2.7/site-packages/

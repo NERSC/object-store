@@ -1,0 +1,4 @@
+#!/global/common/cori/software/python/2.7-anaconda/bin/python
+# EASY-INSTALL-SCRIPT: 'memory-profiler==0.41','mprof'
+__requires__ = 'memory-profiler==0.41'
+__import__('pkg_resources').run_script('memory-profiler==0.41', 'mprof')

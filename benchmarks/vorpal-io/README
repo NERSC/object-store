@@ -1,0 +1,30 @@
+- Modify HDF5_DIR and H5PART_DIR in the Makefile
+- Run make
+
+- Arguments to run:
+
+void PrintUsage (int rank)
+{
+    if (rank == 0) {
+        printf ("Usage: (-n and -b are required!)\n");
+        printf (" -a        alignment in MB (default 1MB)\n");
+        printf (" -b x y z  block dimensions\n");
+        printf (" -c        number of components (default 3)\n");
+        printf (" -d x y z  block +/- adjustments (default 0 0 0)\n");
+        printf (" -i        iterations (default 1)\n");
+        printf (" -n x y z  block decomposition (x*y*z = nprocs)\n");
+        printf (" -o        output directory (default 'output')\n");
+        printf (" -t        timesteps (default 1)\n");
+        printf (" -v        verbosity level (default 3)\n");
+        printf (" -lustre   enable lustre-specific tuning\n");
+        printf (" -mpiposix use MPI-mpiposix VFD\n");
+        printf (" -dryrun   do not perform write\n");
+    }
+    MPI_Finalize();
+    exit (EXIT_SUCCESS);
+}
+
+- Sample run with 8K cores:
+
+aprun -n 8192 /global/homes/s/sbyna/research/power/io-benchmarks/vorpalio/vorpalio -b 100 100 60 -n 32 16 16 -t 20 -o '/scratch3/scratchdirs/sbyna/power/io-benchmarks/vorpalio/output/' -lustre
+
