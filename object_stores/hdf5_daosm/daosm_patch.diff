@@ -1,0 +1,221 @@
+diff --git a/src/H5.c b/src/H5.c
+index 2bd2a60..2781fa1 100644
+--- a/src/H5.c
++++ b/src/H5.c
+@@ -137,20 +137,20 @@ H5_init_library(void)
+ 
+         /* add an attribute on MPI_COMM_SELF to call H5_term_library
+            when it is destroyed, i.e. on MPI_Finalize */
+-        if (mpi_initialized && !mpi_finalized) {
+-            int key_val;
+-
+-            if(MPI_SUCCESS != (mpi_code = MPI_Comm_create_keyval(MPI_NULL_COPY_FN, 
+-                                                                 (MPI_Comm_delete_attr_function *)H5_mpi_delete_cb, 
+-                                                                 &key_val, NULL)))
+-                HMPI_GOTO_ERROR(FAIL, "MPI_Comm_create_keyval failed", mpi_code)
+-
+-            if(MPI_SUCCESS != (mpi_code = MPI_Comm_set_attr(MPI_COMM_SELF, key_val, NULL)))
+-                HMPI_GOTO_ERROR(FAIL, "MPI_Comm_set_attr failed", mpi_code)
+-
+-            if(MPI_SUCCESS != (mpi_code = MPI_Comm_free_keyval(&key_val)))
+-                HMPI_GOTO_ERROR(FAIL, "MPI_Comm_free_keyval failed", mpi_code)
+-        }
++//        if (mpi_initialized && !mpi_finalized) {
++//            int key_val;
++//
++//            if(MPI_SUCCESS != (mpi_code = MPI_Comm_create_keyval(MPI_NULL_COPY_FN, 
++//                                                                 (MPI_Comm_delete_attr_function *)H5_mpi_delete_cb, 
++//                                                                 &key_val, NULL)))
++//                HMPI_GOTO_ERROR(FAIL, "MPI_Comm_create_keyval failed", mpi_code)
++//
++//            if(MPI_SUCCESS != (mpi_code = MPI_Comm_set_attr(MPI_COMM_SELF, key_val, NULL)))
++//                HMPI_GOTO_ERROR(FAIL, "MPI_Comm_set_attr failed", mpi_code)
++//
++//            if(MPI_SUCCESS != (mpi_code = MPI_Comm_free_keyval(&key_val)))
++//                HMPI_GOTO_ERROR(FAIL, "MPI_Comm_free_keyval failed", mpi_code)
++//        }
+     }
+ #endif /*H5_HAVE_PARALLEL*/
+ 
+diff --git a/src/H5VLdaosm.c b/src/H5VLdaosm.c
+index c09bf8d..542f7db 100644
+--- a/src/H5VLdaosm.c
++++ b/src/H5VLdaosm.c
+@@ -395,6 +395,10 @@ H5VLdaosm_init(MPI_Comm pool_comm, uuid_t pool_uuid, char *pool_grp)
+     hbool_t must_bcast = FALSE;
+     int ret;
+     herr_t ret_value = SUCCEED;            /* Return value */
++    d_rank_list_t pool_svc;		// Tang added
++    char *pool_leader_env;		// Tang added
++    int i;
++    int leader_ranks;
+ 
+     FUNC_ENTER_API(FAIL)
+ 
+@@ -410,6 +414,24 @@ H5VLdaosm_init(MPI_Comm pool_comm, uuid_t pool_uuid, char *pool_grp)
+     MPI_Comm_rank(pool_comm, &pool_rank);
+     MPI_Comm_size(pool_comm, &pool_num_procs);
+ 
++    // Tang added
++    pool_leader_env = getenv("DAOS_POOL_LEADERS");
++    // in case of multiple pool leaders, they should all be in DAOS_POOL_LEADERS environment
++    // variable, seperated by ','
++    if (NULL != pool_leader_env) {
++	leader_ranks = atoi(pool_leader_env);
++	// TODO: deal with multiple leaders
++    }
++    pool_svc.rl_nr.num = 1;
++    pool_svc.rl_nr.num_out = 1;
++
++    if(NULL == (pool_svc.rl_ranks = (char *)H5MM_malloc(sizeof(d_rank_t)*1)))
++        HGOTO_ERROR(H5E_FILE, H5E_CANTALLOC, NULL, "can't allocate space for svcl rank list")
++
++    //for (i=0;i<pool_num_procs;i++)
++	pool_svc.rl_ranks[0] = leader_ranks;
++    printf("rl_ranks=%d", pool_svc.rl_ranks[0]);
++
+     if(pool_rank == 0) {
+         /* If there are other processes and we fail we must bcast anyways so they
+          * don't hang */
+@@ -417,7 +439,9 @@ H5VLdaosm_init(MPI_Comm pool_comm, uuid_t pool_uuid, char *pool_grp)
+             must_bcast = TRUE;
+ 
+         /* Connect to the pool */
+-        if(0 != (ret = daos_pool_connect(pool_uuid, pool_grp, NULL /*pool_svc*/, DAOS_PC_RW, &H5VL_daosm_poh_g, NULL /*&pool_info*/, NULL /*event*/)))
++	// Tang added
++        if(0 != (ret = daos_pool_connect(pool_uuid, pool_grp, &pool_svc, DAOS_PC_RW, &H5VL_daosm_poh_g, NULL /*&pool_info*/, NULL /*event*/)))
++        //if(0 != (ret = daos_pool_connect(pool_uuid, pool_grp, NULL /*pool_svc*/, DAOS_PC_RW, &H5VL_daosm_poh_g, NULL /*&pool_info*/, NULL /*event*/)))
+             HGOTO_ERROR(H5E_VOL, H5E_CANTINIT, FAIL, "can't connect to pool: %d", ret)
+ 
+         /* Bcast pool handle if there are other processes */
+@@ -520,6 +544,7 @@ done:
+     } /* end if */
+ 
+     H5MM_xfree(gh_buf_dyn);
++    H5MM_xfree(pool_svc.rl_ranks);
+ 
+     FUNC_LEAVE_API(ret_value)
+ } /* end H5VLdaosm_init() */
+@@ -1960,7 +1985,7 @@ H5VL_daosm_link_read(H5VL_daosm_group_t *grp, const char *name, size_t name_len,
+         case H5L_TYPE_HARD:
+             /* Decode oid */
+             UINT64DECODE(p, val->target.hard.lo)
+-            UINT64DECODE(p, val->target.hard.mid)
++            //UINT64DECODE(p, val->target.hard.mid)
+             UINT64DECODE(p, val->target.hard.hi)
+ 
+             break;
+@@ -2025,7 +2050,8 @@ H5VL_daosm_link_write(H5VL_daosm_group_t *grp, const char *name,
+     daos_iod_t iod;
+     daos_sg_list_t sgl;
+     daos_iov_t sg_iov[2];
+-    uint8_t iov_buf[25];
++    uint8_t iov_buf[17];	// Tang
++    //uint8_t iov_buf[25];
+     uint8_t *p;
+     int ret;
+     herr_t ret_value = SUCCEED;
+@@ -2053,10 +2079,11 @@ H5VL_daosm_link_write(H5VL_daosm_group_t *grp, const char *name,
+ 
+             /* Encode oid */
+             UINT64ENCODE(p, val->target.hard.lo)
+-            UINT64ENCODE(p, val->target.hard.mid)
++            //UINT64ENCODE(p, val->target.hard.mid)
+             UINT64ENCODE(p, val->target.hard.hi)
+ 
+-            iod.iod_size = (uint64_t)25;
++            //iod.iod_size = (uint64_t)25;
++            iod.iod_size = (uint64_t)17; // Tang
+ 
+             /* Set up type specific sgl */
+             daos_iov_set(&sg_iov[0], iov_buf, (daos_size_t)sizeof(iov_buf));
+@@ -3077,7 +3104,7 @@ H5VL_daosm_group_open(void *_item, H5VL_loc_params_t loc_params,
+             /* Encode oid */
+             p = ginfo_buf_static;
+             UINT64ENCODE(p, grp->obj.oid.lo)
+-            UINT64ENCODE(p, grp->obj.oid.mid)
++            //UINT64ENCODE(p, grp->obj.oid.mid)
+             UINT64ENCODE(p, grp->obj.oid.hi)
+ 
+             /* Encode GCPL length */
+@@ -3109,7 +3136,7 @@ H5VL_daosm_group_open(void *_item, H5VL_loc_params_t loc_params,
+         /* Decode oid */
+         p = ginfo_buf_static;
+         UINT64DECODE(p, oid.lo)
+-        UINT64DECODE(p, oid.mid)
++        //UINT64DECODE(p, oid.mid)
+         UINT64DECODE(p, oid.hi)
+ 
+         /* Decode GCPL length */
+@@ -3871,7 +3898,7 @@ H5VL_daosm_dataset_open(void *_item,
+             /* Encode oid */
+             p = dinfo_buf;
+             UINT64ENCODE(p, dset->obj.oid.lo)
+-            UINT64ENCODE(p, dset->obj.oid.mid)
++            //UINT64ENCODE(p, dset->obj.oid.mid)
+             UINT64ENCODE(p, dset->obj.oid.hi)
+ 
+             /* Encode serialized info lengths */
+@@ -3900,7 +3927,7 @@ H5VL_daosm_dataset_open(void *_item,
+         /* Decode oid */
+         p = dinfo_buf_static;
+         UINT64DECODE(p, dset->obj.oid.lo)
+-        UINT64DECODE(p, dset->obj.oid.mid)
++        //UINT64DECODE(p, dset->obj.oid.mid)
+         UINT64DECODE(p, dset->obj.oid.hi)
+ 
+         /* Decode serialized info lengths */
+@@ -5402,7 +5429,7 @@ H5VL_daosm_datatype_open(void *_item,
+             /* Encode oid */
+             p = tinfo_buf;
+             UINT64ENCODE(p, dtype->obj.oid.lo)
+-            UINT64ENCODE(p, dtype->obj.oid.mid)
++            //UINT64ENCODE(p, dtype->obj.oid.mid)
+             UINT64ENCODE(p, dtype->obj.oid.hi)
+ 
+             /* Encode serialized info lengths */
+@@ -5430,7 +5457,7 @@ H5VL_daosm_datatype_open(void *_item,
+         /* Decode oid */
+         p = tinfo_buf_static;
+         UINT64DECODE(p, dtype->obj.oid.lo)
+-        UINT64DECODE(p, dtype->obj.oid.mid)
++        //UINT64DECODE(p, dtype->obj.oid.mid)
+         UINT64DECODE(p, dtype->obj.oid.hi)
+ 
+         /* Decode serialized info lengths */
+@@ -5675,7 +5702,7 @@ H5VL_daosm_object_open(void *_item, H5VL_loc_params_t loc_params,
+                 /* Encode oid */
+                 p = oid_buf;
+                 UINT64ENCODE(p, oid.lo)
+-                UINT64ENCODE(p, oid.mid)
++                //UINT64ENCODE(p, oid.mid)
+                 UINT64ENCODE(p, oid.hi)
+ 
+                 /* We are about to bcast so we no longer need to bcast on failure */
+@@ -5694,7 +5721,7 @@ H5VL_daosm_object_open(void *_item, H5VL_loc_params_t loc_params,
+             /* Decode oid */
+             p = oid_buf;
+             UINT64DECODE(p, oid.lo)
+-            UINT64DECODE(p, oid.mid)
++            //UINT64DECODE(p, oid.mid)
+             UINT64DECODE(p, oid.hi)
+ 
+             /* Check for oid.lo set to 0 - indicates failure */
+@@ -7484,7 +7511,7 @@ H5VL_daosm_map_open(void *_item, H5VL_loc_params_t loc_params, const char *name,
+             /* Encode oid */
+             p = minfo_buf;
+             UINT64ENCODE(p, map->obj.oid.lo)
+-            UINT64ENCODE(p, map->obj.oid.mid)
++            //UINT64ENCODE(p, map->obj.oid.mid)
+             UINT64ENCODE(p, map->obj.oid.hi)
+ 
+             /* Encode serialized info lengths */
+@@ -7512,7 +7539,7 @@ H5VL_daosm_map_open(void *_item, H5VL_loc_params_t loc_params, const char *name,
+         /* Decode oid */
+         p = minfo_buf_static;
+         UINT64DECODE(p, map->obj.oid.lo)
+-        UINT64DECODE(p, map->obj.oid.mid)
++        //UINT64DECODE(p, map->obj.oid.mid)
+         UINT64DECODE(p, map->obj.oid.hi)
+ 
+         /* Decode serialized info lengths */
