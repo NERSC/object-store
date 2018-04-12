@@ -16,7 +16,7 @@ Evaluating object stores for HPC science applications
 
 || BOSS       | VPIC           | BDCATS   |
 |------------- | ------------- |:-------------:| -----:|
-|Field| Astronomy      | Physics |  Cosmology |
+|Field| Astronomy      | Physics |  Plasma |
 |Code| [H5BOSS](https://github.com/valiantljk/h5boss)     | [VPIC-IO](https://github.com/glennklockwood/vpic-io)     |   [BDCATS-IO](https://github.com/glennklockwood/bdcats-io) |
 
 
