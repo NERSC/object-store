@@ -7,7 +7,7 @@ Evaluating object stores for HPC science applications
 |  | Swift     | DAOS        | Ceph  |
 | :------------- | -------------: |-------------:| -----:|
 |Cloud  | [Openstack Swift](https://github.com/openstack/swift)      | [DAOS](https://github.com/daos-stack/daos) |[RADOS](http://docs.ceph.com/docs/master/rados/) |
-|HPC  | [Sci-Swift](https://github.com/valiantljk/sci-swift)     | [HDF5_DAOS-M](https://bitbucket.hdfgroup.org/users/nfortne2/repos/hdf5_naf/browse?at=refs%2Fheads%2Fhdf5_daosm)|  [HDF5_RADOS-VOL](https://bitbucket.hdfgroup.org/users/nfortne2/repos/hdf5_naf/browse?at=refs%2Fheads%2Fhdf5_rados) |
+|HPC  | [HDF5_Swift-VOL](https://github.com/valiantljk/sci-swift)     | [HDF5_DAOS-VOL](https://bitbucket.hdfgroup.org/users/nfortne2/repos/hdf5_naf/browse?at=refs%2Fheads%2Fhdf5_daosm)|  [HDF5_RADOS-VOL](https://bitbucket.hdfgroup.org/users/nfortne2/repos/hdf5_naf/browse?at=refs%2Fheads%2Fhdf5_rados) |
 
 
 
