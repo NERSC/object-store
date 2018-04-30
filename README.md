@@ -37,15 +37,16 @@ Evaluating object stores with HPC science applications
 **How To Use Now**
 ```
 module load hdf5-parallel/rados
-#add rados vol init to existing hdf5 app, e.g., bench_obj_test/ceph/vpic_io/vpicio_uni_h5.c, line 39, 145-160
+#code change&recompile needed, e.g., add rados vol init to existing hdf5 app to initialize specific object store vol, 
+#see bench_obj_test/ceph/vpic_io/vpicio_uni_h5.c, line 39, 145-160
 h5pcc -o vpic vpic.c
 ./vpic 
 ```
 **How To Use in the Future**:
 
 ```
-module load rados
-./vpic  # no recompile/code_change needed 
+module load rados # or daos, swift
+./vpic  # no recompile/code_change needed, app automatically talk to selected object store 
 ```
 
 **Metrics**
