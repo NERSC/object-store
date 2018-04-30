@@ -1,8 +1,8 @@
 # Object-Store in HPC
-Evaluating object stores for HPC science applications
+Evaluating object stores with HPC science applications
 
 
-**Object Stores** and its HPC friendly version:
+**Object Stores** and its HPC supported version:
 
 |  | Swift     | DAOS        | Ceph  |
 | :------------- | -------------: |-------------:| -----:|
@@ -17,15 +17,20 @@ Evaluating object stores for HPC science applications
 || BOSS       | VPIC           | BDCATS   |
 |------------- | ------------- |:-------------:| -----:|
 |Field| Astronomy      | Physics |  Plasma |
-|Code| [H5BOSS](https://github.com/valiantljk/h5boss)     | [VPIC-IO](https://github.com/glennklockwood/vpic-io)     |   [BDCATS-IO](https://github.com/glennklockwood/bdcats-io) |
+|Code| [H5BOSS](https://github.com/valiantljk/h5boss)     | [VPIC-IO](https://sdm.lbl.gov/exahdf5/software.html)     |   [BDCATS-IO](https://sdm.lbl.gov/exahdf5/software.html) |
 
 
 **Testbed**:
 
-|| Swift@NERSC       | DAOS@Intel           | Ceph@NERSC   |
+|| Swift@NERSC       | Boro@Intel           | Ceph@NERSC   |
 |------------- | ------------- |:-------------:| -----:|
-|Storage Nodes| 4     | NA|  NA |
-|Gateway Nodes| 2    |  NA    | NA   |
+|Storage Nodes| 4     | 8|  4 |
+|Gateway Nodes| 2    |  NA    | 2   |
+|Compute Nodes|12076|66|12076|
+|Ram per Compute Node(GB)| 96-128|128|96-128|
+|Cores per Compute Node|32-68|32|32-68|
+|Capacity per Storage Node (TB)|280|2|280|
+|Cpu|Haswell/KNL|Haswell|Haswell/KNL|
 
 **Metrics**
 
