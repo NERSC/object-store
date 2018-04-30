@@ -1,11 +1,22 @@
 #!/bin/bash
+git clone -b hdf5_rados https://bitbucket.hdfgroup.org/scm/~nfortne2/hdf5_naf.git
+PATH_SW=$PWD/h5rados_install # change to where you want to install hdf5 rados vol
+echo $PATH_SW
+mkdir -p $PATH_SW/lib
+mkdir -p $PATH_SW/include
+cp rados_lib_dir/* $PATH_SW/lib
+cp -r rados_include_dir/* $PATH_SW/include
+export C_INCLUDE_PATH=$C_INCLUDE_PATH:$PATH_SW/include/
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PATH_SW/lib/
+export CRAYPE_LINK_TYPE=dynamic
+cd hdf5_naf
 make distclean
 ./autogen.sh
-PATH_SW="/usr/common/software/hdf5-parallel"
-export C_INCLUDE_PATH=$C_INCLUDE_PATH:$PATH_SW/vol/ceph/src/include/
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PATH_SW/rados_lib/
-export CRAYPE_LINK_TYPE=dynamic
-LDFLAGS="-L$PATH_SW/rados_lib/" LIBS="-lrados"  CC=cc CXX=CC ./configure --prefix=$PATH_SW/rados/intel --enable-parallel
-make -j 10 
+LDFLAGS="-L$PATH_SW/lib/" LIBS="-lrados"  CC=cc CXX=CC ./configure --prefix=$PATH_SW --enable-parallel
+make -j 4 
 make install
-#export PATH=/global/u1/j/jialin/object-store/object_stores/ceph/vol/hdf5/install/bin:$PATH
+cd ../
+rm -rf hdf5_naf
+export PATH=$PATH_SW/bin:$PATH
+which h5pcc
+echo 'Compile your HDF5 code with h5pcc, and run on Cori'

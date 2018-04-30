@@ -1,10 +1,34 @@
-#What
-Rados is installed on dtn12, by coping the librados onto cori, we can run from cori compute node. 
+The distance between a HPC user and the rados object store:
+#User (You) -> HDF5 Apps-> HDF5 Rados VOL-> Librados -> Rados object store
 
-#Where
-vol/hdf5/examples/vpic_io/
 
-#How
+#What is Rados
+Rados is the object store for Ceph
+
+#Rados on Cori
+Rados has been installed on dtn12 node, 
+   * login onto cori, then ssh to dtn12
+   * exaple command 'rados --user jialin lspools ' # clearly you want NERSC to create an account for you
+
+#What is Librados
+A programmatic interface to interact with rados osd directly
+   *Avalable Languages: C, C++, Python, Erlang, Go, PHP, Java, Ruby, Haskell
+ 
+#Librados on Cori
+The librados.so file are copied onto Cori, so we can build our apps on top of it and talk to rados object store from cori's 12,000 compute nodes directly without going through dtn12, the gateway nodes.  
+
+(However, We don't build our apps directly on top of librados, we do from a higher api, i.e., hdf5 rados virtual object layer) 
+
+#What is HDF5 Rados VOL
+Rados VOL is a HDF5 plugin that redirects all HDF5 IO calls to the rados object store using the librados api.
+Rados VOL is developed by HDF group, Neil Forter, with the first version released around April 25 2018. 
+
+
+#How to use HDF5 rados VOL on Cori
 module load hdf5-parallel/rados
 h5pcc -o vpic_io vpic_io.c
 ./vpic file_name pool_name ceph_conf number_of_particles
+
+
+#[optional]How to install HDF5 rados VOL
+go to readme in folder 'vol_rados_cori'  

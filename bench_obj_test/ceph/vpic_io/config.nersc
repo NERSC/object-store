@@ -1,10 +1,3 @@
 #!/bin/bash
-export mpich_path='/global/homes/j/jialin/object-store/object_stores/ceph/mpi/mpich-3.2.1/install'
-export C_INCLUDE_PATH=$C_INCLUDE_PATH:/global/homes/j/jialin/object-store/object_stores/ceph/vol/ceph/src/include/:/global/homes/j/jialin/object-store/object_stores/ceph/vol/hdf5/install/include
-export LD_LIBRARY_PATH=$LD_LIBRARY_PAHT:/global/homes/j/jialin/object-store/object_stores/ceph/rados_lib/:/global/homes/j/jialin/object-store/object_stores/ceph/vol/hdf5/install/lib
-export PATH=$mpich_path/bin:$PATH
-export PATH=/global/homes/j/jialin/object-store/object_stores/ceph/vol/hdf5/install/bin:$PATH
-
-#export CEPH_CONF=/etc/ceph/ceph.conf
 export CEPH_CONF=/global/homes/j/jialin/object-store/object_stores/ceph/ceph_conf/ceph.conf
 export POOL=swiftpool
