@@ -1,0 +1,4 @@
+[client.jialin]
+	key = AQC4TphaVEiVNRAAxAUSuhvsa2gOQNACoA6NZQ==
+	caps mon = "allow rw"
+	caps osd = "allow rwx pool=hdfpool, allow rwx  pool=swiftpool"

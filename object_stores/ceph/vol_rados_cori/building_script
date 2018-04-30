@@ -1,0 +1,11 @@
+#!/bin/bash
+make distclean
+./autogen.sh
+PATH_SW="/usr/common/software/hdf5-parallel"
+export C_INCLUDE_PATH=$C_INCLUDE_PATH:$PATH_SW/vol/ceph/src/include/
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PATH_SW/rados_lib/
+export CRAYPE_LINK_TYPE=dynamic
+LDFLAGS="-L$PATH_SW/rados_lib/" LIBS="-lrados"  CC=cc CXX=CC ./configure --prefix=$PATH_SW/rados/intel --enable-parallel
+make -j 10 
+make install
+#export PATH=/global/u1/j/jialin/object-store/object_stores/ceph/vol/hdf5/install/bin:$PATH

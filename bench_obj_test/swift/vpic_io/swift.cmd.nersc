@@ -1,0 +1,11 @@
+#!/bin/bash
+swift -A https://ngfobjtest.nersc.gov:5443/v3 -U $LOGNAME -K $NIMPW stat 
+swift -A https://ngfobjtest.nersc.gov:5443/v3 -U $LOGNAME -K $NIMPW list
+vr=$(swift -A https://ngfobjtest.nersc.gov:5443/v3 -U $LOGNAME -K $NIMPW list)  
+echo $vr
+for it in $vr
+do
+ swift -A https://ngfobjtest.nersc.gov:5443/v3 -U $LOGNAME -K $NIMPW delete $it
+done
+rm *.h5
+rm *.hdf5

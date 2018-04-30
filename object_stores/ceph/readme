@@ -1,2 +1,10 @@
-#!/bin/bash
-ssh jialin@dtn12.nersc.gov
+#What
+Rados is installed on dtn12, by coping the librados onto cori, we can run from cori compute node. 
+
+#Where
+vol/hdf5/examples/vpic_io/
+
+#How
+module load hdf5-parallel/rados
+h5pcc -o vpic_io vpic_io.c
+./vpic file_name pool_name ceph_conf number_of_particles

@@ -1,0 +1,9 @@
+#!/bin/bash
+export OS_AUTH_URL="https://ngfobjtest.nersc.gov:5443/v3"
+export OS_IDENTITY_API_VERSION=3
+export OS_AUTH_VERSION=3.0
+export OS_USERNAME=$LOGNAME
+export OS_PASSWORD=$NIMPW
+export OS_USER_DOMAIN_NAME=Default
+export OS_PROJECT_NAME=$SWIFT_PROJNAME #Jialin_demo2, You will need NERSC Staff to create one
+export OS_PROJECT_DOMAIN_NAME=Default
