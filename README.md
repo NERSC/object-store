@@ -1,4 +1,5 @@
-# Object-Store in HPC
+# Object-Store in HPC <img src="https://user-images.githubusercontent.com/1396867/39416409-8a74adee-4c01-11e8-9453-07031099f6e6.png" width="60">
+
 Evaluating object stores with HPC science applications
 
 
