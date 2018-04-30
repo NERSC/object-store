@@ -1,4 +1,5 @@
-# Object-Store in HPC
+# Object-Store in HPC <img src="https://user-images.githubusercontent.com/1396867/39416409-8a74adee-4c01-11e8-9453-07031099f6e6.png" width="60">
+
 Evaluating object stores with HPC science applications
 
 
@@ -31,6 +32,21 @@ Evaluating object stores with HPC science applications
 |Cores per Compute Node|32-68|32|32-68|
 |Capacity per Storage Node (TB)|280|2|280|
 |Cpu|Haswell/KNL|Haswell|Haswell/KNL|
+
+
+**How To Use**
+```
+module load hdf5-parallel/rados
+#add rados vol init to existing hdf5 app, e.g., bench_obj_test/ceph/vpic_io/vpicio_uni_h5.c, line 39, 145-160
+h5pcc -o vpic vpic.c
+./vpic 
+```
+**How To Use (ideally, not ready yet)**:
+
+```
+module load rados
+./vpic  # no recompile/code_change needed 
+```
 
 **Metrics**
 
