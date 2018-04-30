@@ -33,6 +33,21 @@ Evaluating object stores with HPC science applications
 |Capacity per Storage Node (TB)|280|2|280|
 |Cpu|Haswell/KNL|Haswell|Haswell/KNL|
 
+
+**How To Use**
+```
+module load hdf5-parallel/rados
+#add rados vol init to existing hdf5 app, e.g., bench_obj_test/ceph/vpic_io/vpicio_uni_h5.c, line 39, 145-160
+h5pcc -o vpic vpic.c
+./vpic 
+```
+**How To Use (ideally, not ready yet)**:
+
+```
+module load rados
+./vpic  # no recompile/code_change needed 
+```
+
 **Metrics**
 
 Use at Performance Tier vs. Lustre
