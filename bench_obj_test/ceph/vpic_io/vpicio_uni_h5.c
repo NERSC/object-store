@@ -142,6 +142,7 @@ int main (int argc, char* argv[])
 	printf("Number of processes %d\n",num_procs);
 	hid_t fapl=-1;
         MPI_Info info  = MPI_INFO_NULL;
+/*Rados VOL Related Code Change*/
        	if(rados_create(&cluster, NULL) < 0)
         	ERROR;
    	if(rados_conf_read_file(cluster, argv[3]) < 0)
@@ -158,16 +159,8 @@ int main (int argc, char* argv[])
         	ERROR;
     	if(H5Pset_all_coll_metadata_ops(fapl, true) < 0)
         	ERROR;	
-
-	if (argc == 5)
-	{
-		numparticles = (atoi (argv[4]))*1024*1024;
-	}
-	else
-	{
-		numparticles = 8*1024*1024;
-	}
-
+/*Rados VOL Related Code Change*/
+	numparticles = (atoi (argv[4]))*1024*1024;
 	//if (my_rank == 0) {printf ("Number of paritcles: %ld \n", numparticles);}
 	if(my_rank==0&&numparticles<1024*1024*1024) printf("Number of particles is %d million\n",numparticles/1024/1024);
 	else if(my_rank==0&&numparticles>=1024*1024*1024)printf("Number of particles is %d billion\n",numparticles/1024/1024/1024);
