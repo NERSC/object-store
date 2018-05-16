@@ -1,0 +1,3 @@
+[submodule "object_stores/swift/sciswift"]
+	path = object_stores/swift/sciswift
+	url = git@github.com:valiantljk/sci-swift.git
