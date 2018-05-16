@@ -1,0 +1,36 @@
+srun: error: nid01548: task 0: Exited with exit code 1
+srun: Terminating job step 12496300.0
+srun: error: nid01548: task 0: Exited with exit code 1
+srun: Terminating job step 12496300.1
+srun: error: nid01548: task 0: Exited with exit code 1
+srun: Terminating job step 12496300.2
+srun: error: nid01548: tasks 0-1: Exited with exit code 1
+srun: Terminating job step 12496300.3
+srun: error: nid01548: tasks 0-1: Exited with exit code 1
+srun: Terminating job step 12496300.4
+srun: error: nid01548: tasks 0-1: Exited with exit code 1
+srun: Terminating job step 12496300.5
+srun: error: nid01548: tasks 0-3: Exited with exit code 1
+srun: Terminating job step 12496300.6
+srun: error: nid01548: tasks 0-3: Exited with exit code 1
+srun: Terminating job step 12496300.7
+srun: error: nid01548: tasks 0-3: Exited with exit code 1
+srun: Terminating job step 12496300.8
+srun: error: nid01548: tasks 0-7: Exited with exit code 1
+srun: Terminating job step 12496300.9
+srun: error: nid01548: tasks 0-7: Exited with exit code 1
+srun: Terminating job step 12496300.10
+srun: error: nid01548: tasks 0-7: Exited with exit code 1
+srun: Terminating job step 12496300.11
+srun: error: nid01548: tasks 0-15: Exited with exit code 1
+srun: Terminating job step 12496300.12
+srun: error: nid01548: tasks 0-15: Exited with exit code 1
+srun: Terminating job step 12496300.13
+srun: error: nid01548: tasks 0-15: Exited with exit code 1
+srun: Terminating job step 12496300.14
+srun: error: nid01548: tasks 0-31: Exited with exit code 1
+srun: Terminating job step 12496300.15
+srun: error: nid01548: tasks 0-31: Exited with exit code 1
+srun: Terminating job step 12496300.16
+srun: error: nid01548: tasks 0-31: Exited with exit code 1
+srun: Terminating job step 12496300.17

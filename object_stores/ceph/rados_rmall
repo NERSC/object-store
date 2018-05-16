@@ -1,0 +1,2 @@
+#!/bin/bash
+for i in $(rados --user jialin -p swiftpool ls); do echo $i; rados --user jialin -p swiftpool rm $i; done ;

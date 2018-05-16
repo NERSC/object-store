@@ -1,0 +1,144 @@
+procs:1,test:1
+Number of processes 1
+
+Timing results,io, io+meta
+6.370150
+6.400443
+
+done written vpic_p1.t1.h5
+procs:1,test:2
+Number of processes 1
+
+Timing results,io, io+meta
+6.314439
+6.343393
+
+done written vpic_p1.t2.h5
+procs:1,test:3
+Number of processes 1
+
+Timing results,io, io+meta
+6.437975
+6.469122
+
+done written vpic_p1.t3.h5
+procs:2,test:1
+Number of processes 2
+
+Timing results,io, io+meta
+9.212053
+9.236599
+
+done written vpic_p2.t1.h5
+procs:2,test:2
+Number of processes 2
+
+Timing results,io, io+meta
+8.041190
+8.067101
+
+done written vpic_p2.t2.h5
+procs:2,test:3
+Number of processes 2
+
+Timing results,io, io+meta
+8.963567
+8.985905
+
+done written vpic_p2.t3.h5
+procs:4,test:1
+Number of processes 4
+
+Timing results,io, io+meta
+12.665827
+12.700263
+
+done written vpic_p4.t1.h5
+procs:4,test:2
+Number of processes 4
+
+Timing results,io, io+meta
+15.202549
+15.240948
+
+done written vpic_p4.t2.h5
+procs:4,test:3
+Number of processes 4
+
+Timing results,io, io+meta
+14.211119
+14.244420
+
+done written vpic_p4.t3.h5
+procs:8,test:1
+Number of processes 8
+
+Timing results,io, io+meta
+20.748283
+20.812042
+
+done written vpic_p8.t1.h5
+procs:8,test:2
+Number of processes 8
+
+Timing results,io, io+meta
+23.990850
+24.059105
+
+done written vpic_p8.t2.h5
+procs:8,test:3
+Number of processes 8
+
+Timing results,io, io+meta
+27.777491
+27.841013
+
+done written vpic_p8.t3.h5
+procs:16,test:1
+Number of processes 16
+
+Timing results,io, io+meta
+61.921741
+62.064075
+
+done written vpic_p16.t1.h5
+procs:16,test:2
+Number of processes 16
+
+Timing results,io, io+meta
+45.081657
+45.206718
+
+done written vpic_p16.t2.h5
+procs:16,test:3
+Number of processes 16
+
+Timing results,io, io+meta
+45.153732
+45.286407
+
+done written vpic_p16.t3.h5
+procs:32,test:1
+Number of processes 32
+
+Timing results,io, io+meta
+109.090843
+109.240128
+
+done written vpic_p32.t1.h5
+procs:32,test:2
+Number of processes 32
+
+Timing results,io, io+meta
+84.862610
+85.100243
+
+done written vpic_p32.t2.h5
+procs:32,test:3
+Number of processes 32
+
+Timing results,io, io+meta
+96.721329
+98.451752
+
+done written vpic_p32.t3.h5

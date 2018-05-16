@@ -1,0 +1,11 @@
+#!/bin/bash
+
+for i in 1 2 4 8 16 32 
+do
+   for j in  1 2 3
+   do
+	echo "procs:$i,test:$j" >> 1node.test.out
+ 	srun -n $i ./VPIC vpic_p${i}.t${j}.h5 swiftpool $CEPH_CONF 8 >> 1node.test.out
+	echo "done written vpic_p${i}.t${j}.h5" >> 1node.test.out
+   done
+done
