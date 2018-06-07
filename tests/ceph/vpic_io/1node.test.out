@@ -142,3 +142,57 @@ Timing results,io, io+meta
 98.451752
 
 done written vpic_p32.t3.h5
+procs:64,test:1
+done written vpic_p64.t1.h5
+procs:64,test:2
+done written vpic_p64.t2.h5
+procs:64,test:3
+done written vpic_p64.t3.h5
+procs:128,test:1
+done written vpic_p128.t1.h5
+procs:128,test:2
+done written vpic_p128.t2.h5
+procs:128,test:3
+done written vpic_p128.t3.h5
+procs:256,test:1
+done written vpic_p256.t1.h5
+procs:256,test:2
+done written vpic_p256.t2.h5
+procs:256,test:3
+done written vpic_p256.t3.h5
+procs:64,test:1
+Number of processes 64
+
+Timing results,io, io+meta
+143.976761
+144.320206
+
+done written vpic_p64.t1.h5
+procs:64,test:2
+Number of processes 64
+
+Timing results,io, io+meta
+190.050079
+190.388962
+
+done written vpic_p64.t2.h5
+procs:64,test:3
+Number of processes 64
+
+Timing results,io, io+meta
+155.975235
+156.319473
+
+done written vpic_p64.t3.h5
+procs:128,test:1
+done written vpic_p128.t1.h5
+procs:128,test:2
+done written vpic_p128.t2.h5
+procs:128,test:3
+done written vpic_p128.t3.h5
+procs:256,test:1
+done written vpic_p256.t1.h5
+procs:256,test:2
+done written vpic_p256.t2.h5
+procs:256,test:3
+done written vpic_p256.t3.h5

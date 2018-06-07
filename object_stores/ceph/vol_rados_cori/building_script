@@ -1,6 +1,7 @@
 #!/bin/bash
 git clone -b hdf5_rados https://bitbucket.hdfgroup.org/scm/~nfortne2/hdf5_naf.git
-PATH_SW=$PWD/h5rados_install # change to where you want to install hdf5 rados vol
+#PATH_SW=$PWD/h5rados_install # change to where you want to install hdf5 rados vol
+PATH_SW=/usr/common/software/hdf5-parallel/rados/intel
 echo $PATH_SW
 mkdir -p $PATH_SW/lib
 mkdir -p $PATH_SW/include
