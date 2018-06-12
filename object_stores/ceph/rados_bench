@@ -1,0 +1,17 @@
+##rados bench is using librados, https://github.com/ceph/cbt
+#!/bin/bash
+#for i in 1 2 4 8 16 32 64 128 256 512 1024; do 
+for f in 32mfile 64mfile 128mfile 256mfile 512mfile 1gfile; do
+    #echo "Threads:"$i
+    #echo ${i}" MB"
+    #ib=$(( i*1048576 ))
+    #echo "Bytes:"${ib}
+    echo "puting:"$f
+    #rados bench -p swiftpool --striper -t 8 -b ${ib} 10 write >> striping_8threads.log
+    #rados bench -p swiftpool -t 8 -b ${ib} 10 write >> nonstriping_8threads.log
+    time rados --user jialin -p swiftpool --striper -t 8 put $f"ok" $f 
+    time rados --user jialin -p swiftpool -t 8 put $f"nostripe" $f 
+done
+
+
+
