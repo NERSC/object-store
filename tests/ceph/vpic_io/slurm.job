@@ -1,2 +1,0 @@
-#salloc -N 2 -q interactive -C haswell -t 30
-srun -n 2 ./VPIC  

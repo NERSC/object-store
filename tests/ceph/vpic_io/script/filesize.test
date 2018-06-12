@@ -1,0 +1,540 @@
+Number of Processes 1
+ceph conf file is :/global/homes/j/jialin/object-store/object_stores/ceph/ceph_conf/ceph.conf
+conf file is read in
+rados cluster is connected
+pool connected,sizeof char: 1,sizeof uint:4
+non-striping write size is too large(>90MB), skip it, do striping write now
+Start stripe writing:
+creating striper handle
+setting stripe count and object size
+Rank:0 stripe count is set to 16
+Rank:0 stripe unit is set to 1048576
+Rank:0 object size is set to 16777216
+Striping Configuration:
+Stripe Count:16
+Stripe Unit:1048576
+Object Size:16777216
+Rank:0 striping write successful
+written object stripe_file_test_1, size is 100 MBytes
+writting time (sec):1.695083
+
+bandwidth:58.99MB/sec
+Number of Processes 1
+ceph conf file is :/global/homes/j/jialin/object-store/object_stores/ceph/ceph_conf/ceph.conf
+conf file is read in
+rados cluster is connected
+pool connected,sizeof char: 1,sizeof uint:4
+non-striping write size is too large(>90MB), skip it, do striping write now
+Start stripe writing:
+creating striper handle
+setting stripe count and object size
+Rank:0 stripe count is set to 16
+Rank:0 stripe unit is set to 1048576
+Rank:0 object size is set to 16777216
+Striping Configuration:
+Stripe Count:16
+Stripe Unit:1048576
+Object Size:16777216
+Rank:0 striping write successful
+written object stripe_file_test_2, size is 100 MBytes
+writting time (sec):0.793395
+
+bandwidth:126.04MB/sec
+Number of Processes 1
+ceph conf file is :/global/homes/j/jialin/object-store/object_stores/ceph/ceph_conf/ceph.conf
+conf file is read in
+rados cluster is connected
+pool connected,sizeof char: 1,sizeof uint:4
+non-striping write size is too large(>90MB), skip it, do striping write now
+Start stripe writing:
+creating striper handle
+setting stripe count and object size
+Rank:0 stripe count is set to 16
+Rank:0 stripe unit is set to 1048576
+Rank:0 object size is set to 16777216
+Striping Configuration:
+Stripe Count:16
+Stripe Unit:1048576
+Object Size:16777216
+Rank:0 striping write successful
+written object stripe_file_test_3, size is 100 MBytes
+writting time (sec):0.777679
+
+bandwidth:128.59MB/sec
+Number of Processes 1
+ceph conf file is :/global/homes/j/jialin/object-store/object_stores/ceph/ceph_conf/ceph.conf
+conf file is read in
+rados cluster is connected
+pool connected,sizeof char: 1,sizeof uint:4
+non-striping write size is too large(>90MB), skip it, do striping write now
+Start stripe writing:
+creating striper handle
+setting stripe count and object size
+Rank:0 stripe count is set to 16
+Rank:0 stripe unit is set to 1048576
+Rank:0 object size is set to 16777216
+Striping Configuration:
+Stripe Count:16
+Stripe Unit:1048576
+Object Size:16777216
+Rank:0 striping write successful
+written object stripe_file_test_4, size is 100 MBytes
+writting time (sec):0.777667
+
+bandwidth:128.59MB/sec
+Number of Processes 1
+ceph conf file is :/global/homes/j/jialin/object-store/object_stores/ceph/ceph_conf/ceph.conf
+conf file is read in
+rados cluster is connected
+pool connected,sizeof char: 1,sizeof uint:4
+non-striping write size is too large(>90MB), skip it, do striping write now
+Start stripe writing:
+creating striper handle
+setting stripe count and object size
+Rank:0 stripe count is set to 16
+Rank:0 stripe unit is set to 1048576
+Rank:0 object size is set to 16777216
+Striping Configuration:
+Stripe Count:16
+Stripe Unit:1048576
+Object Size:16777216
+Rank:0 striping write successful
+written object stripe_file_test_5, size is 100 MBytes
+writting time (sec):0.781954
+
+bandwidth:127.88MB/sec
+Number of Processes 1
+ceph conf file is :/global/homes/j/jialin/object-store/object_stores/ceph/ceph_conf/ceph.conf
+conf file is read in
+rados cluster is connected
+pool connected,sizeof char: 1,sizeof uint:4
+non-striping write size is too large(>90MB), skip it, do striping write now
+Start stripe writing:
+creating striper handle
+setting stripe count and object size
+Rank:0 stripe count is set to 16
+Rank:0 stripe unit is set to 1048576
+Rank:0 object size is set to 16777216
+Striping Configuration:
+Stripe Count:16
+Stripe Unit:1048576
+Object Size:16777216
+Rank:0 striping write successful
+written object stripe_file_test_1, size is 200 MBytes
+writting time (sec):1.552720
+
+bandwidth:128.81MB/sec
+Number of Processes 1
+ceph conf file is :/global/homes/j/jialin/object-store/object_stores/ceph/ceph_conf/ceph.conf
+conf file is read in
+rados cluster is connected
+pool connected,sizeof char: 1,sizeof uint:4
+non-striping write size is too large(>90MB), skip it, do striping write now
+Start stripe writing:
+creating striper handle
+setting stripe count and object size
+Rank:0 stripe count is set to 16
+Rank:0 stripe unit is set to 1048576
+Rank:0 object size is set to 16777216
+Striping Configuration:
+Stripe Count:16
+Stripe Unit:1048576
+Object Size:16777216
+Rank:0 striping write successful
+written object stripe_file_test_2, size is 200 MBytes
+writting time (sec):1.580853
+
+bandwidth:126.51MB/sec
+Number of Processes 1
+ceph conf file is :/global/homes/j/jialin/object-store/object_stores/ceph/ceph_conf/ceph.conf
+conf file is read in
+rados cluster is connected
+pool connected,sizeof char: 1,sizeof uint:4
+non-striping write size is too large(>90MB), skip it, do striping write now
+Start stripe writing:
+creating striper handle
+setting stripe count and object size
+Rank:0 stripe count is set to 16
+Rank:0 stripe unit is set to 1048576
+Rank:0 object size is set to 16777216
+Striping Configuration:
+Stripe Count:16
+Stripe Unit:1048576
+Object Size:16777216
+Rank:0 striping write successful
+written object stripe_file_test_3, size is 200 MBytes
+writting time (sec):1.570161
+
+bandwidth:127.38MB/sec
+Number of Processes 1
+ceph conf file is :/global/homes/j/jialin/object-store/object_stores/ceph/ceph_conf/ceph.conf
+conf file is read in
+rados cluster is connected
+pool connected,sizeof char: 1,sizeof uint:4
+non-striping write size is too large(>90MB), skip it, do striping write now
+Start stripe writing:
+creating striper handle
+setting stripe count and object size
+Rank:0 stripe count is set to 16
+Rank:0 stripe unit is set to 1048576
+Rank:0 object size is set to 16777216
+Striping Configuration:
+Stripe Count:16
+Stripe Unit:1048576
+Object Size:16777216
+Rank:0 striping write successful
+written object stripe_file_test_4, size is 200 MBytes
+writting time (sec):1.542229
+
+bandwidth:129.68MB/sec
+Number of Processes 1
+ceph conf file is :/global/homes/j/jialin/object-store/object_stores/ceph/ceph_conf/ceph.conf
+conf file is read in
+rados cluster is connected
+pool connected,sizeof char: 1,sizeof uint:4
+non-striping write size is too large(>90MB), skip it, do striping write now
+Start stripe writing:
+creating striper handle
+setting stripe count and object size
+Rank:0 stripe count is set to 16
+Rank:0 stripe unit is set to 1048576
+Rank:0 object size is set to 16777216
+Striping Configuration:
+Stripe Count:16
+Stripe Unit:1048576
+Object Size:16777216
+Rank:0 striping write successful
+written object stripe_file_test_5, size is 200 MBytes
+writting time (sec):1.545129
+
+bandwidth:129.44MB/sec
+Number of Processes 1
+ceph conf file is :/global/homes/j/jialin/object-store/object_stores/ceph/ceph_conf/ceph.conf
+conf file is read in
+rados cluster is connected
+pool connected,sizeof char: 1,sizeof uint:4
+non-striping write size is too large(>90MB), skip it, do striping write now
+Start stripe writing:
+creating striper handle
+setting stripe count and object size
+Rank:0 stripe count is set to 16
+Rank:0 stripe unit is set to 1048576
+Rank:0 object size is set to 16777216
+Striping Configuration:
+Stripe Count:16
+Stripe Unit:1048576
+Object Size:16777216
+Rank:0 striping write successful
+written object stripe_file_test_1, size is 400 MBytes
+writting time (sec):2.943157
+
+bandwidth:135.91MB/sec
+Number of Processes 1
+ceph conf file is :/global/homes/j/jialin/object-store/object_stores/ceph/ceph_conf/ceph.conf
+conf file is read in
+rados cluster is connected
+pool connected,sizeof char: 1,sizeof uint:4
+non-striping write size is too large(>90MB), skip it, do striping write now
+Start stripe writing:
+creating striper handle
+setting stripe count and object size
+Rank:0 stripe count is set to 16
+Rank:0 stripe unit is set to 1048576
+Rank:0 object size is set to 16777216
+Striping Configuration:
+Stripe Count:16
+Stripe Unit:1048576
+Object Size:16777216
+Rank:0 striping write successful
+written object stripe_file_test_2, size is 400 MBytes
+writting time (sec):3.001185
+
+bandwidth:133.28MB/sec
+Number of Processes 1
+ceph conf file is :/global/homes/j/jialin/object-store/object_stores/ceph/ceph_conf/ceph.conf
+conf file is read in
+rados cluster is connected
+pool connected,sizeof char: 1,sizeof uint:4
+non-striping write size is too large(>90MB), skip it, do striping write now
+Start stripe writing:
+creating striper handle
+setting stripe count and object size
+Rank:0 stripe count is set to 16
+Rank:0 stripe unit is set to 1048576
+Rank:0 object size is set to 16777216
+Striping Configuration:
+Stripe Count:16
+Stripe Unit:1048576
+Object Size:16777216
+Rank:0 striping write successful
+written object stripe_file_test_3, size is 400 MBytes
+writting time (sec):3.020705
+
+bandwidth:132.42MB/sec
+Number of Processes 1
+ceph conf file is :/global/homes/j/jialin/object-store/object_stores/ceph/ceph_conf/ceph.conf
+conf file is read in
+rados cluster is connected
+pool connected,sizeof char: 1,sizeof uint:4
+non-striping write size is too large(>90MB), skip it, do striping write now
+Start stripe writing:
+creating striper handle
+setting stripe count and object size
+Rank:0 stripe count is set to 16
+Rank:0 stripe unit is set to 1048576
+Rank:0 object size is set to 16777216
+Striping Configuration:
+Stripe Count:16
+Stripe Unit:1048576
+Object Size:16777216
+Rank:0 striping write successful
+written object stripe_file_test_4, size is 400 MBytes
+writting time (sec):2.963881
+
+bandwidth:134.96MB/sec
+Number of Processes 1
+ceph conf file is :/global/homes/j/jialin/object-store/object_stores/ceph/ceph_conf/ceph.conf
+conf file is read in
+rados cluster is connected
+pool connected,sizeof char: 1,sizeof uint:4
+non-striping write size is too large(>90MB), skip it, do striping write now
+Start stripe writing:
+creating striper handle
+setting stripe count and object size
+Rank:0 stripe count is set to 16
+Rank:0 stripe unit is set to 1048576
+Rank:0 object size is set to 16777216
+Striping Configuration:
+Stripe Count:16
+Stripe Unit:1048576
+Object Size:16777216
+Rank:0 striping write successful
+written object stripe_file_test_5, size is 400 MBytes
+writting time (sec):4.116160
+
+bandwidth:97.18MB/sec
+Number of Processes 1
+ceph conf file is :/global/homes/j/jialin/object-store/object_stores/ceph/ceph_conf/ceph.conf
+conf file is read in
+rados cluster is connected
+pool connected,sizeof char: 1,sizeof uint:4
+non-striping write size is too large(>90MB), skip it, do striping write now
+Start stripe writing:
+creating striper handle
+setting stripe count and object size
+Rank:0 stripe count is set to 16
+Rank:0 stripe unit is set to 1048576
+Rank:0 object size is set to 16777216
+Striping Configuration:
+Stripe Count:16
+Stripe Unit:1048576
+Object Size:16777216
+Rank:0 striping write successful
+written object stripe_file_test_1, size is 800 MBytes
+writting time (sec):8.750352
+
+bandwidth:91.42MB/sec
+Number of Processes 1
+ceph conf file is :/global/homes/j/jialin/object-store/object_stores/ceph/ceph_conf/ceph.conf
+conf file is read in
+rados cluster is connected
+pool connected,sizeof char: 1,sizeof uint:4
+non-striping write size is too large(>90MB), skip it, do striping write now
+Start stripe writing:
+creating striper handle
+setting stripe count and object size
+Rank:0 stripe count is set to 16
+Rank:0 stripe unit is set to 1048576
+Rank:0 object size is set to 16777216
+Striping Configuration:
+Stripe Count:16
+Stripe Unit:1048576
+Object Size:16777216
+Rank:0 striping write successful
+written object stripe_file_test_2, size is 800 MBytes
+writting time (sec):6.336759
+
+bandwidth:126.25MB/sec
+Number of Processes 1
+ceph conf file is :/global/homes/j/jialin/object-store/object_stores/ceph/ceph_conf/ceph.conf
+conf file is read in
+rados cluster is connected
+pool connected,sizeof char: 1,sizeof uint:4
+non-striping write size is too large(>90MB), skip it, do striping write now
+Start stripe writing:
+creating striper handle
+setting stripe count and object size
+Rank:0 stripe count is set to 16
+Rank:0 stripe unit is set to 1048576
+Rank:0 object size is set to 16777216
+Striping Configuration:
+Stripe Count:16
+Stripe Unit:1048576
+Object Size:16777216
+Rank:0 striping write successful
+written object stripe_file_test_3, size is 800 MBytes
+writting time (sec):6.109544
+
+bandwidth:130.94MB/sec
+Number of Processes 1
+ceph conf file is :/global/homes/j/jialin/object-store/object_stores/ceph/ceph_conf/ceph.conf
+conf file is read in
+rados cluster is connected
+pool connected,sizeof char: 1,sizeof uint:4
+non-striping write size is too large(>90MB), skip it, do striping write now
+Start stripe writing:
+creating striper handle
+setting stripe count and object size
+Rank:0 stripe count is set to 16
+Rank:0 stripe unit is set to 1048576
+Rank:0 object size is set to 16777216
+Striping Configuration:
+Stripe Count:16
+Stripe Unit:1048576
+Object Size:16777216
+Rank:0 striping write successful
+written object stripe_file_test_4, size is 800 MBytes
+writting time (sec):8.255216
+
+bandwidth:96.91MB/sec
+Number of Processes 1
+ceph conf file is :/global/homes/j/jialin/object-store/object_stores/ceph/ceph_conf/ceph.conf
+conf file is read in
+rados cluster is connected
+pool connected,sizeof char: 1,sizeof uint:4
+non-striping write size is too large(>90MB), skip it, do striping write now
+Start stripe writing:
+creating striper handle
+setting stripe count and object size
+Rank:0 stripe count is set to 16
+Rank:0 stripe unit is set to 1048576
+Rank:0 object size is set to 16777216
+Striping Configuration:
+Stripe Count:16
+Stripe Unit:1048576
+Object Size:16777216
+Rank:0 striping write successful
+written object stripe_file_test_5, size is 800 MBytes
+writting time (sec):5.932490
+
+bandwidth:134.85MB/sec
+Number of Processes 1
+ceph conf file is :/global/homes/j/jialin/object-store/object_stores/ceph/ceph_conf/ceph.conf
+conf file is read in
+rados cluster is connected
+pool connected,sizeof char: 1,sizeof uint:4
+non-striping write size is too large(>90MB), skip it, do striping write now
+Start stripe writing:
+creating striper handle
+setting stripe count and object size
+Rank:0 stripe count is set to 16
+Rank:0 stripe unit is set to 1048576
+Rank:0 object size is set to 16777216
+Striping Configuration:
+Stripe Count:16
+Stripe Unit:1048576
+Object Size:16777216
+Rank:0 striping write successful
+written object stripe_file_test_1, size is 1600 MBytes
+writting time (sec):14.459512
+
+bandwidth:110.65MB/sec
+Number of Processes 1
+ceph conf file is :/global/homes/j/jialin/object-store/object_stores/ceph/ceph_conf/ceph.conf
+conf file is read in
+rados cluster is connected
+pool connected,sizeof char: 1,sizeof uint:4
+non-striping write size is too large(>90MB), skip it, do striping write now
+Start stripe writing:
+creating striper handle
+setting stripe count and object size
+Rank:0 stripe count is set to 16
+Rank:0 stripe unit is set to 1048576
+Rank:0 object size is set to 16777216
+Striping Configuration:
+Stripe Count:16
+Stripe Unit:1048576
+Object Size:16777216
+Rank:0 striping write successful
+written object stripe_file_test_2, size is 1600 MBytes
+writting time (sec):14.681650
+
+bandwidth:108.98MB/sec
+Number of Processes 1
+ceph conf file is :/global/homes/j/jialin/object-store/object_stores/ceph/ceph_conf/ceph.conf
+conf file is read in
+rados cluster is connected
+pool connected,sizeof char: 1,sizeof uint:4
+non-striping write size is too large(>90MB), skip it, do striping write now
+Start stripe writing:
+creating striper handle
+setting stripe count and object size
+Rank:0 stripe count is set to 16
+Rank:0 stripe unit is set to 1048576
+Rank:0 object size is set to 16777216
+Striping Configuration:
+Stripe Count:16
+Stripe Unit:1048576
+Object Size:16777216
+Rank:0 striping write successful
+written object stripe_file_test_3, size is 1600 MBytes
+writting time (sec):13.597485
+
+bandwidth:117.67MB/sec
+Number of Processes 1
+ceph conf file is :/global/homes/j/jialin/object-store/object_stores/ceph/ceph_conf/ceph.conf
+conf file is read in
+rados cluster is connected
+pool connected,sizeof char: 1,sizeof uint:4
+non-striping write size is too large(>90MB), skip it, do striping write now
+Start stripe writing:
+creating striper handle
+setting stripe count and object size
+Rank:0 stripe count is set to 16
+Rank:0 stripe unit is set to 1048576
+Rank:0 object size is set to 16777216
+Striping Configuration:
+Stripe Count:16
+Stripe Unit:1048576
+Object Size:16777216
+Rank:0 striping write successful
+written object stripe_file_test_4, size is 1600 MBytes
+writting time (sec):15.167938
+
+bandwidth:105.49MB/sec
+Number of Processes 1
+ceph conf file is :/global/homes/j/jialin/object-store/object_stores/ceph/ceph_conf/ceph.conf
+conf file is read in
+rados cluster is connected
+pool connected,sizeof char: 1,sizeof uint:4
+non-striping write size is too large(>90MB), skip it, do striping write now
+Start stripe writing:
+creating striper handle
+setting stripe count and object size
+Rank:0 stripe count is set to 16
+Rank:0 stripe unit is set to 1048576
+Rank:0 object size is set to 16777216
+Striping Configuration:
+Stripe Count:16
+Stripe Unit:1048576
+Object Size:16777216
+Rank:0 striping write successful
+written object stripe_file_test_5, size is 1600 MBytes
+writting time (sec):13.749995
+
+bandwidth:116.36MB/sec
+Number of Processes 1
+ceph conf file is :/global/homes/j/jialin/object-store/object_stores/ceph/ceph_conf/ceph.conf
+conf file is read in
+Number of Processes 1
+ceph conf file is :/global/homes/j/jialin/object-store/object_stores/ceph/ceph_conf/ceph.conf
+conf file is read in
+Number of Processes 1
+ceph conf file is :/global/homes/j/jialin/object-store/object_stores/ceph/ceph_conf/ceph.conf
+conf file is read in
+Number of Processes 1
+ceph conf file is :/global/homes/j/jialin/object-store/object_stores/ceph/ceph_conf/ceph.conf
+conf file is read in
+Number of Processes 1
+ceph conf file is :/global/homes/j/jialin/object-store/object_stores/ceph/ceph_conf/ceph.conf
+conf file is read in

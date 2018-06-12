@@ -1,0 +1,44 @@
+procs:128,test:1
+Number of processes 128
+
+Timing results,io, io+meta
+250.718521
+250.877930
+
+procs:128,test:2
+Number of processes 128
+
+Timing results,io, io+meta
+275.780334
+275.940094
+
+procs:128,test:3
+Number of processes 128
+
+Timing results,io, io+meta
+311.691467
+311.854004
+
+procs:256,test:1
+Number of processes 256
+
+Timing results,io, io+meta
+466.242493
+466.595764
+
+procs:256,test:2
+Number of processes 256
+procs:256,test:2
+Number of processes 256
+
+Timing results,io, io+meta
+480.648071
+480.994904
+
+procs:256,test:3
+Number of processes 256
+
+Timing results,io, io+meta
+602.561279
+602.906433
+

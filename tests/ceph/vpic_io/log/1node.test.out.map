@@ -1,0 +1,72 @@
+procs:1,test:1
+Number of processes 1
+
+Timing results,io, io+meta
+6.428018
+6.575272
+
+done written vpic_p1.t1.h5
+procs:1,test:2
+Number of processes 1
+
+Timing results,io, io+meta
+6.355201
+6.389329
+
+done written vpic_p1.t2.h5
+procs:1,test:3
+Number of processes 1
+
+Timing results,io, io+meta
+6.297864
+6.330988
+
+done written vpic_p1.t3.h5
+procs:8,test:1
+Number of processes 8
+
+Timing results,io, io+meta
+20.578245
+20.638325
+
+done written vpic_p8.t1.h5
+procs:8,test:2
+Number of processes 8
+
+Timing results,io, io+meta
+22.546576
+22.598358
+
+done written vpic_p8.t2.h5
+procs:8,test:3
+Number of processes 8
+
+Timing results,io, io+meta
+25.392445
+25.449343
+
+done written vpic_p8.t3.h5
+procs:32,test:1
+Number of processes 32
+
+Timing results,io, io+meta
+97.678185
+97.816658
+
+done written vpic_p32.t1.h5
+procs:32,test:2
+Number of processes 32
+
+Timing results,io, io+meta
+78.408249
+78.548210
+
+done written vpic_p32.t2.h5
+procs:32,test:3
+Number of processes 32
+
+Timing results,io, io+meta
+81.508217
+81.648285
+
+done written vpic_p32.t3.h5

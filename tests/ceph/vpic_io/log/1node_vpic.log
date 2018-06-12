@@ -1,0 +1,117 @@
+Number of processes 1
+
+Timing results,io, io+meta
+0.106061
+0.118700
+
+Number of processes 1
+
+Timing results,io, io+meta
+0.106789
+0.132946
+
+Number of processes 1
+
+Timing results,io, io+meta
+0.092719
+0.107568
+
+Number of processes 1
+
+Timing results,io, io+meta
+47.459991
+47.473835
+
+Number of processes 1
+
+Timing results,io, io+meta
+46.687130
+46.700794
+
+Number of processes 1
+
+Timing results,io, io+meta
+46.996265
+47.012287
+
+Number of processes 1
+
+Timing results,io, io+meta
+95.382256
+95.401581
+
+Number of processes 1
+
+Timing results,io, io+meta
+94.305077
+94.323860
+
+Number of processes 1
+
+Timing results,io, io+meta
+125.514717
+125.531754
+
+Number of processes 1
+
+Timing results,io, io+meta
+190.969727
+190.991058
+
+Number of processes 1
+
+Timing results,io, io+meta
+190.909195
+190.930557
+
+Number of processes 1
+
+Timing results,io, io+meta
+191.442154
+191.465088
+
+
+particle:8,test:1
+Number of processes 1
+
+Timing results,io, io+meta
+362.176483
+362.204437
+
+particle:8,test:2
+Number of processes 1
+
+Timing results,io, io+meta
+363.359955
+363.385468
+
+particle:8,test:3
+Number of processes 1
+
+Timing results,io, io+meta
+391.056122
+391.078918
+
+particle:16,test:1
+Number of processes 1
+
+Timing results,io, io+meta
+756.259399
+756.296936
+
+particle:16,test:2
+Number of processes 1
+
+Timing results,io, io+meta
+767.824280
+767.859009
+
+particle:16,test:3
+Number of processes 1
+
+Timing results,io, io+meta
+774.779907
+774.813904
+
+particle:32,test:1
+Number of processes 1

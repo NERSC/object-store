@@ -48,7 +48,7 @@ hid_t file_id, dset_id,dataspaceId;
 hid_t filespace;
 hid_t memspace;
 hid_t plist_id;
-
+hid_t dcpl_id;
 // Variables and dimensions
 long numparticles = 8388608;	// 8  meg particles per process
 long long total_particles, offset;
@@ -88,44 +88,44 @@ void create_and_write_synthetic_h5_data(int rank)
 {
 	// Note: printf statements are inserted basically 
 	// to check the progress. Other than that they can be removed
-	dset_id = H5Dcreate2(file_id, "x", H5T_NATIVE_FLOAT, filespace, H5P_DEFAULT, H5P_DEFAULT, H5P_DEFAULT);
+	dset_id = H5Dcreate2(file_id, "x", H5T_NATIVE_FLOAT, filespace, H5P_DEFAULT, dcpl_id, H5P_DEFAULT);
 	if(dset_id<0) printf("rank:%d, dset create failed\n",rank); 
         ierr = H5Dwrite(dset_id, H5T_NATIVE_FLOAT, memspace, filespace, plist_id, x);
 	if(ierr<0) printf("rank:%d, dset write failed\n",rank);
         H5Dclose(dset_id);
         //if (rank == 0) printf ("Written variable 1 \n");
 
-        dset_id = H5Dcreate2(file_id, "y", H5T_NATIVE_FLOAT, filespace, H5P_DEFAULT, H5P_DEFAULT, H5P_DEFAULT);
+        dset_id = H5Dcreate2(file_id, "y", H5T_NATIVE_FLOAT, filespace, H5P_DEFAULT, dcpl_id, H5P_DEFAULT);
         ierr = H5Dwrite(dset_id, H5T_NATIVE_FLOAT, memspace, filespace, plist_id, y);
         H5Dclose(dset_id);
         //if (rank == 0) printf ("Written variable 2 \n");
 
-        dset_id = H5Dcreate2(file_id, "z", H5T_NATIVE_FLOAT, filespace, H5P_DEFAULT, H5P_DEFAULT, H5P_DEFAULT);
+        dset_id = H5Dcreate2(file_id, "z", H5T_NATIVE_FLOAT, filespace, H5P_DEFAULT, dcpl_id, H5P_DEFAULT);
         ierr = H5Dwrite(dset_id, H5T_NATIVE_FLOAT, memspace, filespace, plist_id, z);
         H5Dclose(dset_id);
         //if (rank == 0) printf ("Written variable 3 \n");
 
-        dset_id = H5Dcreate2(file_id, "id1", H5T_NATIVE_INT, filespace, H5P_DEFAULT, H5P_DEFAULT, H5P_DEFAULT);
+        dset_id = H5Dcreate2(file_id, "id1", H5T_NATIVE_INT, filespace, H5P_DEFAULT, dcpl_id, H5P_DEFAULT);
         ierr = H5Dwrite(dset_id, H5T_NATIVE_INT, memspace, filespace, plist_id, id1);
         H5Dclose(dset_id);
         //if (rank == 0) printf ("Written variable 4 \n");
 
-        dset_id = H5Dcreate2(file_id, "id2", H5T_NATIVE_INT, filespace, H5P_DEFAULT, H5P_DEFAULT, H5P_DEFAULT);
+        dset_id = H5Dcreate2(file_id, "id2", H5T_NATIVE_INT, filespace, H5P_DEFAULT, dcpl_id, H5P_DEFAULT);
         ierr = H5Dwrite(dset_id, H5T_NATIVE_INT, memspace, filespace, plist_id, id2);
         H5Dclose(dset_id);
         //if (rank == 0) printf ("Written variable 5 \n");
 
-        dset_id = H5Dcreate2(file_id, "px", H5T_NATIVE_FLOAT, filespace, H5P_DEFAULT, H5P_DEFAULT, H5P_DEFAULT);
+        dset_id = H5Dcreate2(file_id, "px", H5T_NATIVE_FLOAT, filespace, H5P_DEFAULT, dcpl_id, H5P_DEFAULT);
         ierr = H5Dwrite(dset_id, H5T_NATIVE_FLOAT, memspace, filespace, plist_id, px);
         H5Dclose(dset_id);
         //if (rank == 0) printf ("Written variable 6 \n");
 
-        dset_id = H5Dcreate2(file_id, "py", H5T_NATIVE_FLOAT, filespace, H5P_DEFAULT, H5P_DEFAULT, H5P_DEFAULT);
+        dset_id = H5Dcreate2(file_id, "py", H5T_NATIVE_FLOAT, filespace, H5P_DEFAULT, dcpl_id, H5P_DEFAULT);
         ierr = H5Dwrite(dset_id, H5T_NATIVE_FLOAT, memspace, filespace, plist_id, py);
         H5Dclose(dset_id);
         //if (rank == 0) printf ("Written variable 7 \n");
 
-        dset_id = H5Dcreate2(file_id, "pz", H5T_NATIVE_FLOAT, filespace, H5P_DEFAULT, H5P_DEFAULT, H5P_DEFAULT);
+        dset_id = H5Dcreate2(file_id, "pz", H5T_NATIVE_FLOAT, filespace, H5P_DEFAULT, dcpl_id, H5P_DEFAULT);
         ierr = H5Dwrite(dset_id, H5T_NATIVE_FLOAT, memspace, filespace, plist_id, pz);
         H5Dclose(dset_id);
         //if (rank == 0) printf ("Written variable 8 \n");
@@ -134,8 +134,8 @@ void create_and_write_synthetic_h5_data(int rank)
 int main (int argc, char* argv[]) 
 {
 	(void)MPI_Init(&argc,&argv);
- 	if(argc != 5)
-		PRINTF_ERROR("argc != 5 file pool ceph.conf nparticles\n");
+ 	if(argc != 6)
+		PRINTF_ERROR("argc != 6 file pool ceph.conf nparticles chunksize\n");
 	char *file_name = argv[1];
 	rados_t cluster;
 	int my_rank, num_procs;
@@ -199,7 +199,10 @@ int main (int argc, char* argv[])
 	file_id = H5Fcreate(file_name , H5F_ACC_TRUNC, H5P_DEFAULT, fapl);	
 	filespace = H5Screate_simple(1, (hsize_t *) &total_particles, NULL);
 	memspace =  H5Screate_simple(1, (hsize_t *) &numparticles, NULL);
-
+	dcpl_id =  H5Pcreate(H5P_DATASET_CREATE);
+	hsize_t chunk_dims[1];
+	chunk_dims[0] = atoi (argv[5]);
+	H5Pset_chunk(dcpl_id, 1, chunk_dims);
         plist_id = H5Pcreate(H5P_DATASET_XFER);
         H5Pset_dxpl_mpio(plist_id, H5FD_MPIO_COLLECTIVE);
         H5Sselect_hyperslab(filespace, H5S_SELECT_SET, (hsize_t *) &offset, NULL, (hsize_t *) &numparticles, NULL);

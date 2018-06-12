@@ -1,8 +1,9 @@
-all: VPIC rados_write
+all: VPIC librados_test
 
-VPIC:vpicio_uni_h5.c
-	h5pcc -o VPIC vpicio_uni_h5.c
-rados_write:librados_test.c
-	h5pcc -o rados_write librados_test.c
-clean:
-	rm VPIC *.o rados_write
+VPIC:vpicio.c
+	h5pcc  -o VPIC vpicio.c
+librados_test:librados_test.c
+	h5pcc -o librados_test librados_test.c
+
+clean:	
+	rm VPIC *.o librados_test

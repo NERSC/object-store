@@ -1,0 +1,30 @@
+procs:256,test:1
+Number of processes 256
+
+Timing results,io, io+meta
+552.412415
+552.565002
+
+procs:256,test:2
+Number of processes 256
+
+Timing results,io, io+meta
+638.135803
+638.285339
+
+procs:256,test:3
+Number of processes 256
+
+Timing results,io, io+meta
+755.958130
+756.107849
+
+procs:512,test:1
+Number of processes 512
+
+Timing results,io, io+meta
+1313.072998
+1313.421021
+
+procs:512,test:2
+Number of processes 512
