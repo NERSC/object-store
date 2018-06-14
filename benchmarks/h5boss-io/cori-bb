@@ -1,5 +1,0 @@
-#!/bin/bash
-module load python
-module load h5py-parallel
-export PYTHONPATH=`pwd`/h5boss_py:$PYTHONPATH
-export PATH=`pwd`/h5boss_py/scripts:$PATH

@@ -1,9 +1,0 @@
-#!/bin/bash
-export PYTHONPATH=`pwd`/h5boss_py:$PYTHONPATH
-export PATH=`pwd`/h5boss_py/scripts:$PATH
-export basedir=/global/projecta/projectdirs/sdss/data/sdss/dr12/boss/spectro/redux/v5_7_0
-export PYTHONPATH=/global/homes/j/jialin/anaconda2/lib/python2.7/site-packages:$PYTHONPATH
-export HDF5_PATH=/global/homes/j/jialin/packages/serial-hdf5/hdf5-1.8.16/hdf5path
-export H5PY_PATH=/global/homes/j/jialin/packages/h5py-2.6.0/h5pypath
-export PYTHONPATH=$H5PY_PATH/lib/python2.7/site-packages:$PYTHONPATH
-export PATH=/global/homes/j/jialin/anaconda2/bin:$PATH
