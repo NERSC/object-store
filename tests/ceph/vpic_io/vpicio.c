@@ -47,7 +47,7 @@ herr_t ierr;
 hid_t file_id, dset_id,dataspaceId;
 hid_t filespace;
 hid_t memspace;
-hid_t plist_id;
+hid_t plist_id=H5P_DEFAULT;
 hid_t dcpl_id;
 // Variables and dimensions
 long numparticles = 8388608;	// 8  meg particles per process
@@ -202,7 +202,9 @@ int main (int argc, char* argv[])
 	dcpl_id =  H5Pcreate(H5P_DATASET_CREATE);
 	hsize_t chunk_dims[1];
 	chunk_dims[0] = atoi (argv[5]);
-	H5Pset_chunk(dcpl_id, 1, chunk_dims);
+	if(chunk_dims[0]>0){
+		H5Pset_chunk(dcpl_id, 1, chunk_dims);
+	}
         plist_id = H5Pcreate(H5P_DATASET_XFER);
         H5Pset_dxpl_mpio(plist_id, H5FD_MPIO_COLLECTIVE);
         H5Sselect_hyperslab(filespace, H5S_SELECT_SET, (hsize_t *) &offset, NULL, (hsize_t *) &numparticles, NULL);
