@@ -3,6 +3,10 @@
 #     [crush-ruleset-name] [expected-num-objects]
 ceph osd pool create swiftpool 1024 1024 replicated
 ceph osd pool create hdfpool 8 8 replicated # for comparison, as previously, the pool has only 8 pg, before June 7 2018
+ceph osd pool delete swiftpool swiftpool --yes-i-really-really-mean-it
+ceph osd pool delete hdfpool hdfpool --yes-i-really-really-mean-it
+ceph osd pool get hdfpool size # get replication size
+ceph osd pool set hdfpool size 1
 #ceph osd pool create {pool-name} {pg-num}  {pgp-num}   erasure \
 #     [erasure-code-profile] [crush-ruleset-name] [expected_num_objects]
 #

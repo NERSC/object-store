@@ -137,14 +137,15 @@ int main (int argc, char* argv[])
  	if(argc != 6)
 		PRINTF_ERROR("argc != 6 file pool ceph.conf nparticles chunksize\n");
 	char *file_name = argv[1];
-	rados_t cluster;
 	int my_rank, num_procs;
 	MPI_Comm_rank(MPI_COMM_WORLD, &my_rank);
     	MPI_Comm_size(MPI_COMM_WORLD, &num_procs);
-	if(my_rank==0)
-		printf("Number of processes %d\n",num_procs);
+	//if(my_rank==0)
+	//	printf("Number of processes %d\n",num_procs);
 	hid_t fapl=-1;
         MPI_Info info  = MPI_INFO_NULL;
+//Rados VOL Related Code Change
+	rados_t cluster;
 	/*Rados VOL Related Code Change*/
        	if(rados_create(&cluster, NULL) < 0)
         	ERROR;
@@ -162,8 +163,9 @@ int main (int argc, char* argv[])
         	ERROR;
     	if(H5Pset_all_coll_metadata_ops(fapl, true) < 0)
         	ERROR;	
-	/*Rados VOL Related Code Change*/
-	numparticles = (atoi (argv[4]))*1024*1024;
+//Rados VOL Related Code Change
+
+	numparticles =atol (argv[4]);
 	//if (my_rank == 0) {printf ("Number of paritcles: %ld \n", numparticles);}
 	//if(my_rank==0&&numparticles<1024*1024*1024) printf("Number of particles is %d million\n",numparticles/1024/1024);
 	//else if(my_rank==0&&numparticles>=1024*1024*1024)printf("Number of particles is %d billion\n",numparticles/1024/1024/1024);
@@ -236,9 +238,9 @@ int main (int argc, char* argv[])
 
 	if (my_rank == 0)
 	{
-		printf ("\nTiming results,io, io+meta\n");
+	//	printf ("\nTiming results,io, io+meta\n");
 		timer_msg (1);
-		timer_msg (0);
+	//	timer_msg (0);
 		printf ("\n");
 	}
 error:
@@ -248,5 +250,5 @@ error:
     } H5E_END_TRY;
 	(void)MPI_Finalize();
 
-	return 1;
+	return 0;
 }

@@ -6,9 +6,9 @@
 #Non-chunking by default
 #1-32 processes
 
-tsize=64
-usize=256
-umill=8
+tsize=64  # totoal million of particles 
+usize=256 # MBs per 8 million
+umill=8   # default number of particles
 logfile=vpic_2.1.log
 particle=$((tsize/usize))
 nparticle=$((particle*umill)) # e.g., 2048/256 * 8 = 64 million

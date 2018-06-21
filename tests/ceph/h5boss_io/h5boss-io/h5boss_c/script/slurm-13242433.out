@@ -1,0 +1,20 @@
+warning: '--size|-s' deprecated, use '--stripe-size|-S' instead
+/global/cscratch1/sd/jialin/h5boss_ost4
+stripe_count:   4 stripe_size:    4194304 stripe_offset:  -1
+submiting 1-th job to rados:100000 datasets
+Writing 100000 datasets.
+Reading from dset_stats.csv
+Time: 684.927612
+12950 MB
+submiting 2-th job to rados:100000 datasets
+Writing 100000 datasets.
+Reading from dset_stats.csv
+Time: 704.158508
+12950 MB
+submiting 3-th job to rados:100000 datasets
+Writing 100000 datasets.
+Reading from dset_stats.csv
+slurmstepd: error: *** STEP 13242433.2 ON nid00890 CANCELLED AT 2018-06-20T13:17:31 DUE TO TIME LIMIT ***
+srun: got SIGCONT
+srun: got SIGCONT
+srun: forcing job termination

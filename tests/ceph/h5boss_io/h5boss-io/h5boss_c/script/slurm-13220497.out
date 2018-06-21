@@ -1,0 +1,89 @@
+warning: '--size|-s' deprecated, use '--stripe-size|-S' instead
+/global/cscratch1/sd/jialin/h5boss_ost4
+stripe_count:   4 stripe_size:    4194304 stripe_offset:  -1
+submiting 1-th job to lustre:1000 datasets
+submiting 1-th job to rados:1000 datasets
+srun: Warning: can't run 1 processes on 2 nodes, setting nnodes to 1
+srun: Warning: can't run 1 processes on 2 nodes, setting nnodes to 1
+Writing 1000 datasets.
+Reading from dset_stats.csv
+Writing 1000 datasets.
+Reading from dset_stats.csv
+Time: 0.359468
+137 MB
+Time: 16.978352
+133 MB
+submiting 2-th job to lustre:1000 datasets
+submiting 2-th job to rados:1000 datasets
+srun: Warning: can't run 1 processes on 2 nodes, setting nnodes to 1
+srun: Warning: can't run 1 processes on 2 nodes, setting nnodes to 1
+Writing 1000 datasets.
+Reading from dset_stats.csv
+Writing 1000 datasets.
+Reading from dset_stats.csv
+Time: 0.349205
+137 MB
+Time: 138.417496
+133 MB
+submiting 3-th job to lustre:1000 datasets
+submiting 3-th job to rados:1000 datasets
+srun: Warning: can't run 1 processes on 2 nodes, setting nnodes to 1
+srun: Warning: can't run 1 processes on 2 nodes, setting nnodes to 1
+Writing 1000 datasets.
+Reading from dset_stats.csv
+Writing 1000 datasets.
+Reading from dset_stats.csv
+Time: 0.356027
+137 MB
+Time: 10.936068
+133 MB
+submiting 1-th job to lustre:10000 datasets
+submiting 1-th job to rados:10000 datasets
+srun: Warning: can't run 1 processes on 2 nodes, setting nnodes to 1
+srun: Warning: can't run 1 processes on 2 nodes, setting nnodes to 1
+Writing 10000 datasets.
+Reading from dset_stats.csv
+Writing 10000 datasets.
+Reading from dset_stats.csv
+Time: 6.491142
+1295 MB
+Time: 175.361801
+1291 MB
+submiting 2-th job to lustre:10000 datasets
+submiting 2-th job to rados:10000 datasets
+srun: Warning: can't run 1 processes on 2 nodes, setting nnodes to 1
+srun: Warning: can't run 1 processes on 2 nodes, setting nnodes to 1
+Writing 10000 datasets.
+Reading from dset_stats.csv
+Writing 10000 datasets.
+Reading from dset_stats.csv
+Time: 5.960717
+1295 MB
+Time: 98.467911
+1291 MB
+submiting 3-th job to lustre:10000 datasets
+submiting 3-th job to rados:10000 datasets
+srun: Warning: can't run 1 processes on 2 nodes, setting nnodes to 1
+srun: Warning: can't run 1 processes on 2 nodes, setting nnodes to 1
+Writing 10000 datasets.
+Reading from dset_stats.csv
+Writing 10000 datasets.
+Reading from dset_stats.csv
+Time: 6.537777
+1295 MB
+Time: 120.653786
+1291 MB
+submiting 1-th job to lustre:100000 datasets
+submiting 1-th job to rados:100000 datasets
+srun: Warning: can't run 1 processes on 2 nodes, setting nnodes to 1
+srun: Warning: can't run 1 processes on 2 nodes, setting nnodes to 1
+Writing 100000 datasets.
+Reading from dset_stats.csv
+Writing 100000 datasets.
+Reading from dset_stats.csv
+h5boss_lustre: H5Cmpio.c:961: H5C_construct_candidate_list__min_clean: Assertion `nominated_entries_size >= space_needed' failed.
+srun: error: nid01489: task 0: Aborted
+srun: Terminating job step 13220497.13
+slurmstepd: error: *** STEP 13220497.12 ON nid01475 CANCELLED AT 2018-06-19T19:19:24 DUE TO TIME LIMIT ***
+srun: got SIGCONT
+srun: forcing job termination

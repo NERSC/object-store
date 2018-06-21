@@ -1,0 +1,5 @@
+#!/bin/bash
+module load hdf5-parallel/rados
+export CEPH_CONF=/global/homes/j/jialin/object-store/object_stores/ceph/ceph_conf/ceph.conf
+export POOL=swiftpool
+#module load cray-hdf5-parallel 

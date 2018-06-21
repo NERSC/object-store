@@ -1,2 +1,3 @@
+tests/ceph/vpic_io/script//*.log
 object_stores/ceph/temp_files
 object_stores/ceph/vol_rados_cori/ceph-12.2.5.tar.gz
