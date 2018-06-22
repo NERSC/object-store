@@ -1,5 +1,5 @@
 CC=h5pcc
-CFLAGS=  -Wall
+CFLAGS= -g -O0
 LDFLAGS=
 SOURCES=h5boss_rados.c h5boss_lustre.c
 OBJECTS=$(SOURCES:.c=.o)

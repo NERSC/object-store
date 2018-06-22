@@ -163,7 +163,7 @@ int main(int argc, char* argv[])
             printf("Error opening the dataset [%s]\n", all_dset_names[my_write_start+i]);
             continue;
         }
-        if (buf == NULL) {
+/*        if (buf == NULL) {
             buf = (char*)calloc(sizeof(char), all_dset_sizes[i+my_write_start]);
             prev_buf_size = all_dset_sizes[i+my_write_start];
         }
@@ -172,6 +172,9 @@ int main(int argc, char* argv[])
                 buf = realloc(buf, all_dset_sizes[i+my_write_start]);
             }
         }
+*/
+	buf=(char*)calloc(sizeof(char), all_dset_sizes[i+my_write_start]);
+	if(buf==NULL) printf("rank:%d,buf alocate error\n",rank);
         buf[0] = all_dset_names[my_write_start+i][1]; 
         buf[1] = all_dset_names[my_write_start+i][2]; 
         buf[2] = all_dset_names[my_write_start+i][3]; 
