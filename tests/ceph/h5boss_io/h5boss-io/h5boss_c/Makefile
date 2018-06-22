@@ -12,4 +12,4 @@ h5boss_lustre:h5boss_lustre.c
 	 $(CC) $(CFLAGS) -o  $@ $<
 	 cp $(EXECUTABLE) script
 clean:
-	rm  h5boss_rados h5boss_lustre
+	rm *.o h5boss_rados h5boss_lustre
