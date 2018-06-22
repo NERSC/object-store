@@ -1,0 +1,15 @@
+1. Open chrome, log in: https://nxcloud01.nersc.gov
+
+2. Create a virtual desktop, if existing, select and click connect
+
+3. start Cori
+
+4. salloc -N 1 -q interactive -C haswell -t 50
+
+5. module load totalview
+
+6. add -g -O0 in compiling
+
+7. totalview srun -a-n 8 ./h5boss_rados dset_stats.csv boss_error_8.h5 100 $CEPH_CONF swiftpool
+
+8. click go in totalview window
