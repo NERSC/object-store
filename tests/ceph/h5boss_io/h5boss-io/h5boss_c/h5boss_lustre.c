@@ -117,7 +117,7 @@ int main(int argc, char* argv[])
     /* H5Fclose(file_id); */
 
     MPI_Barrier(MPI_COMM_WORLD);
-   
+    timer_on(1); 
     hsize_t dims[3] = {0};
     for (i = 0; i < n_write; i++) {
         dims[0] = all_dset_sizes[i];
@@ -128,9 +128,20 @@ int main(int argc, char* argv[])
         H5Sclose(filespace);
         H5Dclose(dset_id);
     }
+    H5Fclose(file_id);
+    MPI_Barrier (MPI_COMM_WORLD);
+    timer_off(1);
+    file_id=H5Fopen(out_filename, H5F_ACC_RDWR, plist_id);
+    if(file_id <0){
+        if(rank==0)  printf("Error opening a file [%s]\n", out_filename);
+        goto done;
+    }else{
+        if(rank==0)  printf("Ok opening existing file[%s]\n",out_filename);
+    }
+
 
     hsize_t count = 0;
-    char *buf = NULL;
+    //char *buf = NULL;
     int prev_buf_size;
     herr_t ret;
     MPI_Barrier(MPI_COMM_WORLD);
@@ -142,7 +153,7 @@ int main(int argc, char* argv[])
             printf("Error opening the dataset [%s]\n", all_dset_names[my_write_start+i]);
             continue;
         }
-        if (buf == NULL) {
+/*        if (buf == NULL) {
             buf = (char*)calloc(sizeof(char), all_dset_sizes[i+my_write_start]);
             prev_buf_size = all_dset_sizes[i+my_write_start];
         }
@@ -151,6 +162,9 @@ int main(int argc, char* argv[])
                 buf = realloc(buf, all_dset_sizes[i+my_write_start]);
             }
         }
+*/
+        char * buf=(char*)malloc(sizeof(char)*all_dset_sizes[i+my_write_start]);
+        memset(buf,'\0',sizeof(char)*all_dset_sizes[i+my_write_start]);
         buf[0] = all_dset_names[my_write_start+i][1]; 
         buf[1] = all_dset_names[my_write_start+i][2]; 
         buf[2] = all_dset_names[my_write_start+i][3]; 
@@ -161,6 +175,7 @@ int main(int argc, char* argv[])
             H5Dclose(dset_id);
             continue;
         }
+	free(buf);
         //printf("Proc %d: written dset [%s]\n", rank, all_dset_names[my_write_start+i]);
         /* all_dset_names[my_write_start+i] */
         H5Dclose(dset_id);
@@ -172,7 +187,8 @@ int main(int argc, char* argv[])
 
     if (rank == 0)
     {
-        timer_msg(0);
+	timer_msg(1);//dset creation cost
+        timer_msg(0);//dset write cost
         printf("%ld MB\n",tsize/1024/1024);
     }
 
