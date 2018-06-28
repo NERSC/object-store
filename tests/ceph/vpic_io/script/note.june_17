@@ -1,0 +1,6 @@
+vpic_1.1.log is the weak scaling, writing 512MB per process data to rados, with processes from 1 to 32
+h5rados vol does the default chunking of 64MB, thus in case of only one process, the data will be chunked into 64MB
+
+we will hold any chunking related result, but only do the non-chunking tests for now, so 
+vpic_1.1_redo.sh is going to test the weak scaling of 1-32 processes
+vpic_2.1.sh is going to test the strong scaling of only 64MB

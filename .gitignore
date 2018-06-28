@@ -1,3 +1,14 @@
 tests/ceph/vpic_io/script//*.log
 object_stores/ceph/temp_files
 object_stores/ceph/vol_rados_cori/ceph-12.2.5.tar.gz
+tests/ceph/vpic_io/script/logs
+tests/ceph/h5boss_io/h5boss-io/h5boss_c/script/*.out
+tests/ceph/vpic_io/VPIC
+tests/ceph/vpic_io/librados_test
+tests/ceph/vpic_io/librados_test.o
+tests/ceph/vpic_io/librados_test_multi
+tests/ceph/vpic_io/script/VPIC
+tests/ceph/vpic_io/script/all.job
+tests/ceph/vpic_io/script/librados_test
+tests/ceph/vpic_io/script/xx.l
+tests/ceph/vpic_io/vpicio.o
