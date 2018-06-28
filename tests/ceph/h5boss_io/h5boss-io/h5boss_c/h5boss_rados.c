@@ -110,23 +110,19 @@ int main(int argc, char* argv[])
 
     //fflush(stdout);
     my_n_write  = n_write;
-    if(rank==0)
-    printf("checking before bcast\n");
     MPI_Bcast( &n_write, 1, MPI_INT, 0, MPI_COMM_WORLD);
     MPI_Bcast( all_dset_names_1d, n_write*NAMELEN, MPI_CHAR, 0, MPI_COMM_WORLD);
     MPI_Bcast( all_dset_sizes, n_write, MPI_INT, 0, MPI_COMM_WORLD);
-    fflush(stdout);
-    if(rank==0)
-    printf("checking before distributed work\n"); 
+   // fflush(stdout);
     // Distribute work evenly
     // Last rank may have extra work
     my_n_write = n_write / size;
     my_write_start = rank * my_n_write;
     if (rank == size - 1) 
         my_n_write += n_write % size;
-    printf("rank:%d,start:%d,length:%d\n",rank,my_write_start,my_n_write);
+  //  printf("rank:%d,start:%d,length:%d\n",rank,my_write_start,my_n_write);
     file_id = H5Fcreate(out_filename, H5F_ACC_TRUNC, H5P_DEFAULT, fapl);
-    fflush(stdout); 
+    //fflush(stdout); 
     if (file_id < 0) {
         printf("Error creating a file [%s]\n", out_filename);
         ERROR;
@@ -138,25 +134,38 @@ int main(int argc, char* argv[])
     /* H5Fclose(file_id); */
 
     MPI_Barrier(MPI_COMM_WORLD);
-
+    timer_on(1);
     for (i = 0; i < n_write; i++) {
         dims[0] = all_dset_sizes[i];
         filespace = H5Screate_simple(1, dims, NULL); 
-
+//	if (rank==0) printf("dset:%d,size:%d\n",i,all_dset_sizes[i]);
         dset_id = H5Dcreate(file_id, all_dset_names[i], H5T_NATIVE_CHAR, filespace, 
                             H5P_DEFAULT, H5P_DEFAULT, H5P_DEFAULT);
         H5Sclose(filespace);
         H5Dclose(dset_id);
-	printf("rank:%d, creating dset:%d\n",rank,i);
+	//printf("rank:%d, creating dset:%d\n",rank,i);
     }
+    H5Fclose(file_id);
+    MPI_Barrier (MPI_COMM_WORLD);
+    timer_off(1);
+    file_id=H5Fopen(out_filename, H5F_ACC_RDWR, fapl);
+    if(file_id <0){
+	if(rank==0)  printf("Error opening a file [%s]\n", out_filename);
+        ERROR;
+    }else{
+    	if(rank==0)  printf("Ok opening existing file[%s]\n",out_filename);
+    }
+
     fflush(stdout);
     hsize_t count = 0;
-    char *buf = NULL;
+    //char *buf = NULL;
     int prev_buf_size;
     herr_t ret;
     MPI_Barrier (MPI_COMM_WORLD);
     timer_on (0);
     for (i = 0; i < my_n_write; i++) {
+	
+//	printf("Rank %d starting\n",rank);
         count = all_dset_sizes[i+my_write_start];
         dset_id = H5Dopen(file_id, all_dset_names[my_write_start+i], H5P_DEFAULT);
         if (dset_id < 0) {
@@ -173,32 +182,38 @@ int main(int argc, char* argv[])
             }
         }
 */
-	buf=(char*)calloc(sizeof(char), all_dset_sizes[i+my_write_start]);
-	if(buf==NULL) printf("rank:%d,buf alocate error\n",rank);
+	char * buf=(char*)malloc(sizeof(char)*all_dset_sizes[i+my_write_start]);
+	memset(buf,'\0',sizeof(char)*all_dset_sizes[i+my_write_start]);
+	//if(buf==NULL) printf("rank:%d,buf alocate error\n",rank);
         buf[0] = all_dset_names[my_write_start+i][1]; 
         buf[1] = all_dset_names[my_write_start+i][2]; 
         buf[2] = all_dset_names[my_write_start+i][3]; 
         buf[3] = all_dset_names[my_write_start+i][4]; 
-	printf("rank:%d,buf:%s\n",rank,buf);
+	//printf("rank:%d,buf:%s\n",rank,buf);
+//	if (i==0)printf("rank:%d,dset:%d,size:%d\n",rank,i+my_write_start,all_dset_sizes[i+my_write_start]);
         ret = H5Dwrite(dset_id, H5T_NATIVE_CHAR, H5S_ALL, H5S_ALL, H5P_DEFAULT, buf);
         if (ret < 0) {
             printf("Error writing to the dataset [%s]\n", all_dset_names[my_write_start+i]);
             H5Dclose(dset_id);
             continue;
         }
-        printf("Proc %d: written dset [%s]\n", rank, all_dset_names[my_write_start+i]);
+	free (buf);
+  //      if(rank==size-1) printf("Proc %d: written dset [%s]\n", rank, all_dset_names[my_write_start+i]);
         /* all_dset_names[my_write_start+i] */
         H5Dclose(dset_id);
     }
-    fflush(stdout);
+    //fflush(stdout);
+    //printf("rank:%d, done with dset write\n",rank);
     MPI_Barrier (MPI_COMM_WORLD);
     timer_off (0);
 
     
     if (rank == 0)
     {
-	timer_msg(0);
+	timer_msg(1);//dset creation cost
+	timer_msg(0);//dset write cost
 	printf("%ld MB\n",tsize/1024/1024);
+
     }
 
 error:

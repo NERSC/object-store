@@ -12,7 +12,7 @@ export POOL=swiftpool
 #Rados Usage
 #Usage: srun -n n_proc ./h5boss_write_dummy_data /path/to/dset_list.txt output_file n_dsets ceph_conf poolname
 
-for k in 100 1000 10000 #100000 #1000000 # number of datasets
+for k in 128 1024 10240 #100000 #1000000 # number of datasets
 do
  for i in 1 2 3 # number of repeat tests
  do
