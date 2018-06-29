@@ -1,0 +1,3 @@
+#!/bin/bash
+time rados --debug_ms=1   -p swiftpool put output.dat output.dat &
+time rados --debug_ms=1   -p swiftpool put output.dat1 output.dat1 &
