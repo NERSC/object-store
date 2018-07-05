@@ -1,0 +1,36 @@
+Test:1 Proc:1
+Number of particles is 256 billion
+Test:1 Proc:2
+Number of particles is 256 billion
+Test:1 Proc:4
+Number of particles is 256 billion
+Test:1 Proc:8
+Number of particles is 256 billion
+Test:1 Proc:16
+Number of particles is 256 billion
+Test:1 Proc:32
+Number of particles is 256 billion
+Test:2 Proc:1
+Number of particles is 256 billion
+Test:2 Proc:2
+Number of particles is 256 billion
+Test:2 Proc:4
+Number of particles is 256 billion
+Test:2 Proc:8
+Number of particles is 256 billion
+Test:2 Proc:16
+Number of particles is 256 billion
+Test:2 Proc:32
+Number of particles is 256 billion
+Test:3 Proc:1
+Number of particles is 256 billion
+Test:3 Proc:2
+Number of particles is 256 billion
+Test:3 Proc:4
+Number of particles is 256 billion
+Test:3 Proc:8
+Number of particles is 256 billion
+Test:3 Proc:16
+Number of particles is 256 billion
+Test:3 Proc:32
+Number of particles is 256 billion
