@@ -133,7 +133,7 @@ void read_h5_data(int rank)
         H5Dclose(dset_id);
 	if (rank == 0) printf ("Read variable 8 \n");
 
-	print_data(3);
+	//print_data(3);
 }
 
 int main (int argc, char* argv[]) 

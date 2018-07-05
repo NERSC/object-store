@@ -193,6 +193,7 @@ int main (int argc, char* argv[])
 
 	MPI_Allreduce(&numparticles, &total_particles, 1, MPI_LONG_LONG, MPI_SUM, MPI_COMM_WORLD);
         MPI_Scan(&numparticles, &offset, 1, MPI_LONG_LONG, MPI_SUM, MPI_COMM_WORLD);	
+	if (my_rank == 0) {printf ("Number of paritcles: [%ld], Total particles: [%ld] \n", numparticles,total_particles);}
 	//if(my_rank==0&&numparticles<1024*1024*1024) 
 	//	printf("Number of particles is %d million, total %d million\n",numparticles/1024/1024,total_particles/1024/1024);
         //else if(my_rank==0&&numparticles>=1024*1024*1024)

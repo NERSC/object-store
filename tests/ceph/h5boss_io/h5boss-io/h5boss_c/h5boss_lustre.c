@@ -109,7 +109,7 @@ int main(int argc, char* argv[])
     hid_t file_id, dset_id, filespace;
     H5Pset_fapl_mpio(plist_id, MPI_COMM_WORLD, MPI_INFO_NULL);
     file_id = H5Fcreate(out_filename, H5F_ACC_TRUNC, H5P_DEFAULT, plist_id);
-    H5Pclose(plist_id);
+    //H5Pclose(plist_id);
     if (file_id < 0) {
         printf("Error creating a file [%s]\n", out_filename);
         goto done;

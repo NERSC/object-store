@@ -12,7 +12,8 @@
 #cd ../
 #source config.nersc
 #cd script
-for j in 1 2 3 # repeat three times
+#for j in 1 2 3 # repeat three times
+j=1
 do 
   for i in 1 2 4 8 16 32 #64 # testing 1 to 32 nodes
    do
@@ -32,4 +33,4 @@ do
 	#clean the data
 	echo 'submitted job with '$i' nodes'
    done
-done
+#done

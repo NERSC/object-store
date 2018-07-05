@@ -157,12 +157,21 @@ int main(int argc, char* argv[])
     }
 
     fflush(stdout);
+    //ERROR;
     hsize_t count = 0;
     //char *buf = NULL;
     int prev_buf_size;
     herr_t ret;
     MPI_Barrier (MPI_COMM_WORLD);
     timer_on (0);
+    char * buf=(char*)malloc(sizeof(char)*all_dset_sizes[my_write_start]);
+    memset(buf,'\0',sizeof(char)*all_dset_sizes[my_write_start]);
+    //if(buf==NULL) printf("rank:%d,buf alocate error\n",rank);
+    buf[0] = all_dset_names[my_write_start][1];
+    buf[1] = all_dset_names[my_write_start][2];
+    buf[2] = all_dset_names[my_write_start][3];
+    buf[3] = all_dset_names[my_write_start][4];
+
     for (i = 0; i < my_n_write; i++) {
 	
 //	printf("Rank %d starting\n",rank);
@@ -182,6 +191,7 @@ int main(int argc, char* argv[])
             }
         }
 */
+/*
 	char * buf=(char*)malloc(sizeof(char)*all_dset_sizes[i+my_write_start]);
 	memset(buf,'\0',sizeof(char)*all_dset_sizes[i+my_write_start]);
 	//if(buf==NULL) printf("rank:%d,buf alocate error\n",rank);
@@ -189,6 +199,7 @@ int main(int argc, char* argv[])
         buf[1] = all_dset_names[my_write_start+i][2]; 
         buf[2] = all_dset_names[my_write_start+i][3]; 
         buf[3] = all_dset_names[my_write_start+i][4]; 
+*/
 	//printf("rank:%d,buf:%s\n",rank,buf);
 //	if (i==0)printf("rank:%d,dset:%d,size:%d\n",rank,i+my_write_start,all_dset_sizes[i+my_write_start]);
         ret = H5Dwrite(dset_id, H5T_NATIVE_CHAR, H5S_ALL, H5S_ALL, H5P_DEFAULT, buf);
@@ -197,7 +208,8 @@ int main(int argc, char* argv[])
             H5Dclose(dset_id);
             continue;
         }
-	free (buf);
+       
+	//free (buf);
   //      if(rank==size-1) printf("Proc %d: written dset [%s]\n", rank, all_dset_names[my_write_start+i]);
         /* all_dset_names[my_write_start+i] */
         H5Dclose(dset_id);
