@@ -1,6 +1,0 @@
-bdcats weak scaling test on rados, 8MB each process
-.03125 million particles
-1 processes
-filename:bdcats_proc1_npar.03125.h5
-filename should be:bdcats_proc1_npar.03125.h5
-submitted job with 1 processes
