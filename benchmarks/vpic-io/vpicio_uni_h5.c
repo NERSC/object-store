@@ -41,17 +41,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-
+#include <Python.h>
+#include <numpy/arrayobject.h>
+#include <string.h>
+#include <assert.h>
+#include "../src/python_vol.h"
 // A simple timer based on gettimeofday
-#include "./timer.h"
+#include "timer.h"
+#define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION
 struct timeval start_time[3];
 float elapse[3];
 
 // HDF5 specific declerations
 herr_t ierr;
-hid_t file_id, dset_id;
-hid_t filespace, memspace;
-hid_t plist_id;
+hid_t file_id, dset_id,dataspaceId,dset_id1,dset_id2,dset_id3,dset_id4,dset_id5,dset_id6,dset_id7;
+//hid_t H5S_ALL=H5S_ALL;
+//hid_t H5S_ALL=H5S_ALL;
+hid_t plist_id=H5P_DEFAULT;
 
 // Variables and dimensions
 long numparticles = 8388608;	// 8  meg particles per process
@@ -92,72 +98,60 @@ void create_and_write_synthetic_h5_data(int rank)
 {
 	// Note: printf statements are inserted basically 
 	// to check the progress. Other than that they can be removed
-	dset_id = H5Dcreate(file_id, "x", H5T_NATIVE_FLOAT, filespace, H5P_DEFAULT, H5P_DEFAULT, H5P_DEFAULT);
-        ierr = H5Dwrite(dset_id, H5T_NATIVE_FLOAT, memspace, filespace, plist_id, x);
-        H5Dclose(dset_id);
-	if (rank == 0) printf ("Written variable 1 \n");
+	dset_id = H5Dcreate2(file_id, "x", H5T_NATIVE_FLOAT, dataspaceId, H5P_DEFAULT, H5P_DEFAULT, H5P_DEFAULT);
+        ierr = H5Dwrite(dset_id, H5T_NATIVE_FLOAT, H5S_ALL, H5S_ALL, plist_id, x);
+        //H5Dclose(dset_id);
+        //if (rank == 0) printf ("Written variable 1 \n");
 
-	dset_id = H5Dcreate(file_id, "y", H5T_NATIVE_FLOAT, filespace, H5P_DEFAULT, H5P_DEFAULT, H5P_DEFAULT);
-        ierr = H5Dwrite(dset_id, H5T_NATIVE_FLOAT, memspace, filespace, plist_id, y);
-        H5Dclose(dset_id);
-	if (rank == 0) printf ("Written variable 2 \n");
+        dset_id1 = H5Dcreate2(file_id, "y", H5T_NATIVE_FLOAT, dataspaceId, H5P_DEFAULT, H5P_DEFAULT, H5P_DEFAULT);
+        ierr = H5Dwrite(dset_id1, H5T_NATIVE_FLOAT, H5S_ALL, H5S_ALL, plist_id, y);
+        //H5Dclose(dset_id);
+        //if (rank == 0) printf ("Written variable 2 \n");
 
-	dset_id = H5Dcreate(file_id, "z", H5T_NATIVE_FLOAT, filespace, H5P_DEFAULT, H5P_DEFAULT, H5P_DEFAULT);
-        ierr = H5Dwrite(dset_id, H5T_NATIVE_FLOAT, memspace, filespace, plist_id, z);
-        H5Dclose(dset_id);
-	if (rank == 0) printf ("Written variable 3 \n");
+        dset_id2 = H5Dcreate2(file_id, "z", H5T_NATIVE_FLOAT, dataspaceId, H5P_DEFAULT, H5P_DEFAULT, H5P_DEFAULT);
+        ierr = H5Dwrite(dset_id2, H5T_NATIVE_FLOAT, H5S_ALL, H5S_ALL, plist_id, z);
+        //H5Dclose(dset_id);
+        //if (rank == 0) printf ("Written variable 3 \n");
 
-	dset_id = H5Dcreate(file_id, "id1", H5T_NATIVE_INT, filespace, H5P_DEFAULT, H5P_DEFAULT, H5P_DEFAULT);
-        ierr = H5Dwrite(dset_id, H5T_NATIVE_INT, memspace, filespace, plist_id, id1);
-        H5Dclose(dset_id);
-	if (rank == 0) printf ("Written variable 4 \n");
+        dset_id3 = H5Dcreate2(file_id, "id1", H5T_NATIVE_INT, dataspaceId, H5P_DEFAULT, H5P_DEFAULT, H5P_DEFAULT);
+        ierr = H5Dwrite(dset_id3, H5T_NATIVE_INT, H5S_ALL, H5S_ALL, plist_id, id1);
+        //H5Dclose(dset_id);
+        //if (rank == 0) printf ("Written variable 4 \n");
 
-	dset_id = H5Dcreate(file_id, "id2", H5T_NATIVE_INT, filespace, H5P_DEFAULT, H5P_DEFAULT, H5P_DEFAULT);
-        ierr = H5Dwrite(dset_id, H5T_NATIVE_INT, memspace, filespace, plist_id, id2);
-        H5Dclose(dset_id);
-	if (rank == 0) printf ("Written variable 5 \n");
+        dset_id4 = H5Dcreate2(file_id, "id2", H5T_NATIVE_INT, dataspaceId, H5P_DEFAULT, H5P_DEFAULT, H5P_DEFAULT);
+        ierr = H5Dwrite(dset_id4, H5T_NATIVE_INT, H5S_ALL, H5S_ALL, plist_id, id2);
+        //H5Dclose(dset_id);
+        //if (rank == 0) printf ("Written variable 5 \n");
 
-	dset_id = H5Dcreate(file_id, "px", H5T_NATIVE_FLOAT, filespace, H5P_DEFAULT, H5P_DEFAULT, H5P_DEFAULT);
-        ierr = H5Dwrite(dset_id, H5T_NATIVE_FLOAT, memspace, filespace, plist_id, px);
-        H5Dclose(dset_id);
-	if (rank == 0) printf ("Written variable 6 \n");
+        dset_id5 = H5Dcreate2(file_id, "px", H5T_NATIVE_FLOAT, dataspaceId, H5P_DEFAULT, H5P_DEFAULT, H5P_DEFAULT);
+        ierr = H5Dwrite(dset_id5, H5T_NATIVE_FLOAT, H5S_ALL, H5S_ALL, plist_id, px);
+        //H5Dclose(dset_id);
+        //if (rank == 0) printf ("Written variable 6 \n");
 
-	dset_id = H5Dcreate(file_id, "py", H5T_NATIVE_FLOAT, filespace, H5P_DEFAULT, H5P_DEFAULT, H5P_DEFAULT);
-        ierr = H5Dwrite(dset_id, H5T_NATIVE_FLOAT, memspace, filespace, plist_id, py);
-        H5Dclose(dset_id);
-	if (rank == 0) printf ("Written variable 7 \n");
+        dset_id6 = H5Dcreate2(file_id, "py", H5T_NATIVE_FLOAT, dataspaceId, H5P_DEFAULT, H5P_DEFAULT, H5P_DEFAULT);
+        ierr = H5Dwrite(dset_id6, H5T_NATIVE_FLOAT, H5S_ALL, H5S_ALL, plist_id, py);
+        //H5Dclose(dset_id);
+        //if (rank == 0) printf ("Written variable 7 \n");
 
-	dset_id = H5Dcreate(file_id, "pz", H5T_NATIVE_FLOAT, filespace, H5P_DEFAULT, H5P_DEFAULT, H5P_DEFAULT);
-        ierr = H5Dwrite(dset_id, H5T_NATIVE_FLOAT, memspace, filespace, plist_id, pz);
-        H5Dclose(dset_id);
-	if (rank == 0) printf ("Written variable 8 \n");
+        dset_id7 = H5Dcreate2(file_id, "pz", H5T_NATIVE_FLOAT, dataspaceId, H5P_DEFAULT, H5P_DEFAULT, H5P_DEFAULT);
+        ierr = H5Dwrite(dset_id7, H5T_NATIVE_FLOAT, H5S_ALL, H5S_ALL, plist_id, pz);
+        //H5Dclose(dset_id);
+        //if (rank == 0) printf ("Written variable 8 \n");
 }
 
 int main (int argc, char* argv[]) 
 {
 	char *file_name = argv[1];
-	
-	MPI_Init(&argc,&argv);
+	const char plugin_name[7]="python";	
+	//MPI_Init(&argc,&argv);
 	int my_rank, num_procs;
-	MPI_Comm comm;
-	MPI_Comm_dup(MPI_COMM_WORLD, &comm);
-
-	MPI_Comm_rank (comm, &my_rank);
-	MPI_Comm_size (comm, &num_procs);
-
-        MPI_Info info  = MPI_INFO_NULL;
-
-	if (argc == 3)
-	{
-		numparticles = (atoi (argv[2]))*1024*1024;
+	hid_t acc_tpl, under_fapl, vol_id, vol_id2;
+	if (argc == 3){
+	  numparticles = (atoi (argv[2]))*1024*1024;
 	}
-	else
-	{
-		numparticles = 8*1024*1024;
+	else{
+	  numparticles = 8*1024*1024;
 	}
-
-	if (my_rank == 0) {printf ("Number of paritcles: %ld \n", numparticles);}
-
 	x=(float*)malloc(numparticles*sizeof(double));
 	y=(float*)malloc(numparticles*sizeof(double));
 	z=(float*)malloc(numparticles*sizeof(double));
@@ -170,80 +164,50 @@ int main (int argc, char* argv[])
 	id2=(int*)malloc(numparticles*sizeof(int));
 
 	init_particles ();
-
+	/*
 	if (my_rank == 0)
 	{
 		printf ("Finished initializeing particles \n");
 	}
-
+	*/
 	// h5part_int64_t alignf = 8*1024*1024;
 
-	MPI_Barrier (comm);
+	//MPI_Barrier (comm);
 	timer_on (0);
 
-	MPI_Allreduce(&numparticles, &total_particles, 1, MPI_LONG_LONG, MPI_SUM, comm);
-        MPI_Scan(&numparticles, &offset, 1, MPI_LONG_LONG, MPI_SUM, comm);	
-	offset -= numparticles;
+       //Initialize Python and Numpy Routine
+        Py_Initialize();
+        import_array();
 
-	plist_id = H5Pcreate(H5P_FILE_ACCESS);
-        H5Pset_fapl_mpio(plist_id, comm, info);
-	file_id = H5Fcreate(file_name , H5F_ACC_TRUNC, H5P_DEFAULT, plist_id);
 
-	//file = H5PartOpenFileParallel (file_name, H5PART_WRITE | H5PART_VFD_MPIPOSIX | H5PART_FS_LUSTRE, MPI_COMM_WORLD);
-	//file_id = H5Fcreate(file_name , H5F_ACC_TRUNC, H5P_DEFAULT, H5P_DEFAULT);
-        //H5Pclose(plist_id);
-	
-	if (my_rank == 0)
-	{
-		printf ("Opened HDF5 file... \n");
-	}
-	// Throttle and see performance
-	// H5PartSetThrottle (file, 10);
 
-	// H5PartWriteFileAttribString(file, "Origin", "Tested by Suren");
-
-	filespace = H5Screate_simple(1, (hsize_t *) &total_particles, NULL);
-        memspace =  H5Screate_simple(1, (hsize_t *) &numparticles, NULL);
-
-        plist_id = H5Pcreate(H5P_DATASET_XFER);
-        H5Pset_dxpl_mpio(plist_id, H5FD_MPIO_COLLECTIVE);
-        H5Sselect_hyperslab(filespace, H5S_SELECT_SET, (hsize_t *) &offset, NULL, (hsize_t *) &numparticles, NULL);
-
-	MPI_Barrier (comm);
+        dataspaceId =  H5Screate_simple(1, (hsize_t *) &numparticles, NULL);
 	timer_on (1);
-
-	if (my_rank == 0) printf ("Before writing particles \n");
+	//timer create timer write timer write timer_true;  
+	//if (my_rank == 0) printf ("Before writing particles \n");
 	create_and_write_synthetic_h5_data(my_rank);
 
-	MPI_Barrier (comm);
+	//MPI_Barrier (comm);
 	timer_off (1);
-	if (my_rank == 0) printf ("After writing particles \n");
-
-	H5Sclose(memspace);
-        H5Sclose(filespace);
-        H5Pclose(plist_id);
-        H5Fclose(file_id);
-	H5close();
-	if (my_rank == 0) printf ("After closing HDF5 file \n");
-
+	H5Fclose(file_id);
 	free(x); free(y); free(z);
 	free(px); free(py); free(pz);
 	free(id1);
 	free(id2);
 
-	MPI_Barrier (comm);
+	//MPI_Barrier (comm);
 
 	timer_off (0);
 
 	if (my_rank == 0)
 	{
-		printf ("\nTiming results\n");
-		timer_msg (1, "just writing data");
-		timer_msg (0, "opening, writing, closing file");
+		//printf ("\nTiming results\n");
+		timer_msg (1);
+		timer_msg (0);
 		printf ("\n");
 	}
-
-	MPI_Finalize();
+	Py_Finalize();
+	//MPI_Finalize();
 
 	return 0;
 }

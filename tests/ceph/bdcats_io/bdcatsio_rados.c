@@ -132,8 +132,8 @@ void read_h5_data(int rank)
         //ierr = H5Dread(dset_id, H5T_NATIVE_FLOAT, memspace, filespace, fapl, pz);
         H5Dclose(dset_id);
 	//if (rank == 0) printf ("Read variable 8 \n");
-
-	//print_data(3);
+	//printf("Rank %d:\n",rank);
+	//print_data(10);
 }
 
 int main (int argc, char* argv[]) 
@@ -215,16 +215,17 @@ int main (int argc, char* argv[])
 
         //H5Pset_dxpl_mpio(fapl, H5FD_MPIO_COLLECTIVE);
         H5Sselect_hyperslab(filespace, H5S_SELECT_SET, (hsize_t *) &offset, NULL, (hsize_t *) &numparticles, NULL);
-
+	if (my_rank == 0) printf ("Before reading particles \n");
 	MPI_Barrier (MPI_COMM_WORLD);
 	timer_on (1);
 
 	//if (my_rank == 0) printf ("Before reading particles \n");
+	//printf("Rank:%d started\n",my_rank);
 	read_h5_data(my_rank);
-
+	//printf("Rank:%d ended\n",my_rank);
 	MPI_Barrier (MPI_COMM_WORLD);
 	timer_off (1);
-	//if (my_rank == 0) printf ("After reading particles \n");
+	if (my_rank == 0) printf ("After reading particles \n");
 
 	free(x); free(y); free(z);
 	free(px); free(py); free(pz);
