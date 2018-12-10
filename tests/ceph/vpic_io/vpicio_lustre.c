@@ -135,8 +135,8 @@ void create_and_write_synthetic_h5_data(int rank)
 int main (int argc, char* argv[]) 
 {
 	(void)MPI_Init(&argc,&argv);
- 	if(argc != 6)
-		printf("argc != 6 file pool ceph.conf nparticles chunksize\n");
+ 	if(argc != 4)
+		printf("argc != 4 file nparticles chunksize\n");
 	char *file_name = argv[1];
 	int my_rank, num_procs;
 	MPI_Comm_rank(MPI_COMM_WORLD, &my_rank);
@@ -152,7 +152,7 @@ int main (int argc, char* argv[])
 	H5Pset_fapl_mpio(fapl,MPI_COMM_WORLD,info);
    	if(H5Pset_all_coll_metadata_ops(fapl, true) < 0)
         	goto error;	
-	numparticles =atol (argv[4]);
+	numparticles =atol (argv[2]);
 	//if (my_rank == 0) {printf ("Number of paritcles: [%ld], Total particles: [%ld] \n", numparticles);}
 	//if(my_rank==0&&numparticles<1024*1024*1024) printf("Number of particles is %d million\n",numparticles/1024/1024);
 	//else if(my_rank==0&&numparticles>=1024*1024*1024)printf("Number of particles is %d billion\n",numparticles/1024/1024/1024);
@@ -191,7 +191,7 @@ int main (int argc, char* argv[])
 	memspace =  H5Screate_simple(1, (hsize_t *) &numparticles, NULL);
 	dcpl_id =  H5Pcreate(H5P_DATASET_CREATE);
 	hsize_t chunk_dims[1];
-	chunk_dims[0] = atoi (argv[5]);
+	chunk_dims[0] = atoi (argv[3]);
 	if(chunk_dims[0]>0){
 		H5Pset_chunk(dcpl_id, 1, chunk_dims);
 	}

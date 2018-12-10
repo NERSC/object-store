@@ -189,27 +189,10 @@ int main (int argc, char* argv[])
 	H5VL_daosm_init();
 	plist_id = H5Pcreate(H5P_FILE_ACCESS);
 	H5Pset_fapl_daosm(plist_id, comm, info);
-
+ 
+        MPI_Barrier(MPI_COMM_WORLD);
+	timer_on (0);
 	file_id = H5Fcreate(file_name , H5F_ACC_TRUNC, H5P_DEFAULT, plist_id);
-// Tang^
-
-	//plist_id = H5Pcreate(H5P_FILE_ACCESS);
-        //H5Pset_fapl_mpio(plist_id, comm, info);
-	//file_id = H5Fcreate(file_name , H5F_ACC_TRUNC, H5P_DEFAULT, plist_id);
-
-	//file = H5PartOpenFileParallel (file_name, H5PART_WRITE | H5PART_VFD_MPIPOSIX | H5PART_FS_LUSTRE, MPI_COMM_WORLD);
-	//file_id = H5Fcreate(file_name , H5F_ACC_TRUNC, H5P_DEFAULT, H5P_DEFAULT);
-        //H5Pclose(plist_id);
-	
-	if (my_rank == 0)
-	{
-		printf ("Opened HDF5 file... \n");
-	}
-	// Throttle and see performance
-	// H5PartSetThrottle (file, 10);
-
-	// H5PartWriteFileAttribString(file, "Origin", "Tested by Suren");
-
 	filespace = H5Screate_simple(1, (hsize_t *) &total_particles, NULL);
         memspace =  H5Screate_simple(1, (hsize_t *) &numparticles, NULL);
 
@@ -220,20 +203,15 @@ int main (int argc, char* argv[])
 
 	MPI_Barrier (comm);
 	timer_on (1);
-
-	if (my_rank == 0) printf ("Before writing particles \n");
+	timer_off(0);
 	create_and_write_synthetic_h5_data(my_rank);
 
 	MPI_Barrier (comm);
 	timer_off (1);
-	if (my_rank == 0) printf ("After writing particles \n");
-
 	H5Sclose(memspace);
         H5Sclose(filespace);
         H5Pclose(plist_id);
         H5Fclose(file_id);
-	if (my_rank == 0) printf ("After closing HDF5 file \n");
-
 	free(x); free(y); free(z);
 	free(px); free(py); free(pz);
 	free(id1);
@@ -243,13 +221,14 @@ int main (int argc, char* argv[])
 
 	timer_off (0);
 
-	if (my_rank == 0)
-	{
-		printf ("\nTiming results\n");
-		timer_msg (1, "just writing data");
-		timer_msg (0, "opening, writing, closing file");
-		printf ("\n");
-	}
+        if (my_rank == 0)
+        {
+                printf ("\nI/O Cost (sec):\n");
+                timer_msg (1);
+                printf ("Metadata Cost (sec):\n");
+                timer_msg (0);
+                printf ("\n");
+        }
 
 	MPI_Finalize();
 
